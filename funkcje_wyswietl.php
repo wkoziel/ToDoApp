@@ -9,8 +9,8 @@ function tworz_naglowek_html($tytul) {
     <style>
       body { font-family: Arial, Helvetica, sans-serif; font-size: 13px }
       li, td { font-family: Arial, Helvetica, sans-serif; font-size: 13px }
-      hr { color: #3333cc; width=300; text-align=left}
-      a { color: #000000 }
+      hr { color: #3333cc; width: 300; text-align: left;}
+      a { color: #000000; }
     </style>
   </head>
   <body>
@@ -50,16 +50,16 @@ function wyswietl_informacje_witryny() {
   // wyświetlenie informacji marketingowych
 ?>
   <ul>
-  <li>Przechowuj swoje zakładki online!
-  <li>Zobacz, czego używają inni!
-  <li>Podziel się swoimi ulubionymi stronami z innymi!
+  <li>Dodawaj nowe zadania
+  <li>Zobacz swoje najważniejsze obecnie zadania
+  <li>Rejestruj czas i sprawdź, jak efektywna jest Twoja praca
   </ul>
 <?php
 }
 
 function wyswietl_form_log() {
 ?>
-  <p><a href="formularz_rejestracji.php">Jeszcze nie członek?</a></p>
+  <p><a href="formularz_rejestracji.php">Nie masz jeszcze konta?</a></p>
   <form method="post" action="czlonek.php">
   <table bgcolor="#cccccc">
    <tr>
@@ -106,6 +106,7 @@ function wyswietl_form_rej() {
 
 }
 
+//do zmiany na wyswietl zadania 
 function wyswietl_urle_uzyt($tablica_url) {
   //wyswietlenie URL-i użytkownika
 
@@ -142,6 +143,7 @@ function wyswietl_urle_uzyt($tablica_url) {
 <?php
 }
 
+//do zmiany - trzeba dać jakieś działające z naszą apką xd
 function wyswietl_menu_uzyt() {
   // wyświetlenie menu opcji na stronie
 ?>
@@ -166,7 +168,8 @@ function wyswietl_menu_uzyt() {
 <?php
 }
 
-function wyswietl_dodaj_zak_form() {
+//wyświetl dodaj zadanie 
+function wyswietl_dodaj_zadanie_form() {
   // wyświetlenie formularza do dodania nowych zakładek
 ?>
 <form name="tabela_zak" action="dodaj_zak.php" method="post">
@@ -192,7 +195,7 @@ function wyswietl_haslo_form() {
    <tr><td>Nowe hasło:</td>
        <td><input type="password" name="nowe_haslo" size="16" maxlength="16"/></td>
    </tr>
-   <tr><td>Powtorzenie nowego hasła:</td>
+   <tr><td>Powtórzenie nowego hasła:</td>
        <td><input type="password" name="nowe_haslo2" size="16" maxlength="16"/></td>
    </tr>
    <tr><td colspan="2" align="center"><input type="submit" value="Zmiana hasła"/>
@@ -217,32 +220,4 @@ function wyswietl_zapomnij_form() {
    <br />
 <?php
 }
-
-function wyswietl_rekomend_urle($tablica_url) {
-  // wyniki podobne do wyswietl_urle_uzyt
-  // zamiast wyświetlać URL-e użytkownika, wyświetla rekomendacje
-?>
-  <br />
-  <table width="300" cellpadding="2" cellspacing="0">
-<?php
-  $kolor = "#cccccc";
-  echo "<tr bgcolor=\"".$kolor."\"><td><strong>Rekomendacje</strong></td></tr>";
-  if ((is_array($tablica_url)) && (count($tablica_url)>0)) {
-    foreach ($tablica_url as $url) {
-      if ($kolor == "#cccccc") {
-        $kolor = "#ffffff";
-      } else {
-        $kolor = "#cccccc";
-      }
-      echo "<tr bgcolor=\"".$kolor."\">
-            <td><a href=\"".$url."\">".htmlspecialchars($url)."</a></td></tr>";
-    }
-  } else {
-    echo "<tr><td>Aktualnie brak rekomendacji.</td></tr>";
-  }
-?>
-  </table>
-<?php
-}
-
 ?>

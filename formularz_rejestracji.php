@@ -6,4 +6,3 @@
 
  tworz_stopke_html();
 ?>
-

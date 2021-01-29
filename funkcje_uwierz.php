@@ -149,9 +149,11 @@ function powiadom_haslo($nazwa_uz, $haslo) {
                            where nazwa_uz='".$nazwa_uz."'");
     if (!$wynik) {
       throw new Exception('Nie znaleziono adresu e-mail');
-    } else if ($wynik->num_rows == 0) {
+    } 
+    else if ($wynik->num_rows == 0) {
       throw new Exception('Nie znaleziono adresu e-mail'); // nazwy użytkownika nie ma w bazie danych
-    } else {
+    } 
+    else {
       $wiersz = $wynik->fetch_object();
       $email = $wiersz->email;
       $od = "From: obsluga@zakladkaphp \r\n";
@@ -161,7 +163,8 @@ function powiadom_haslo($nazwa_uz, $haslo) {
 
       if (mail($email, 'Informacja o logowaniu ZakładkaPHP', $wiad, $od)) {
         return true;
-      } else {
+      } 
+      else {
         throw new Exception('Wysłanie e-maila nie powiodło się');
       }
     }
