@@ -8,12 +8,7 @@ function tworz_naglowek_html($tytul) {
   <html>
   <head>
     <title><?php echo $tytul;?></title>
-    <style>
-      body { font-family: Arial, Helvetica, sans-serif; font-size: 13px }
-      li, td { font-family: Arial, Helvetica, sans-serif; font-size: 13px }
-      hr { color: #3333cc; width: 300; text-align: left;}
-      a { color: #000000; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styl.css" />
   </head>
   <body>
   <img src="zakladka.gif" alt="Logo ZakładkaPHP" border="0"
