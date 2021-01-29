@@ -1,5 +1,7 @@
 <?php
 
+//TUTAJ WSZĘDZIE USTAWIĆ NOWE STYLE
+
 function tworz_naglowek_html($tytul) {
   // wyświetlenie nagłówka HTML
 ?>
@@ -16,7 +18,7 @@ function tworz_naglowek_html($tytul) {
   <body>
   <img src="zakladka.gif" alt="Logo ZakładkaPHP" border="0"
        align="left" valign="bottom" height = "55" width = "57" />
-  <h1>&nbsp;ZakładkaPHP</h1>
+  <h1>&nbsp;To Do App</h1>
   <hr />
 <?php
   if($tytul) {
