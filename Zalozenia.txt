@@ -1,0 +1,13 @@
+Temat: Organizer zadań
+
+Zespół: Wojciech Kozieł / Tatiana Cieślar / Piotr Hadam
+
+Opis: Aplikacja webowa mająca na celu wspieranie użytkownika podczas planowania i organizacji zadań na dany okres np. ułatwiająca studentom wykonywanie zdań w kolejności uzależnionej od terminu oddania danej pracy. 
+
+Wstępnie planujemy żeby interfejs aplikacji składał się z 4 stosów:
+ - Zgłoszone zadania - stos wszystkich zadań do zrobienia dodanych przez użytkownika(?)
+ - Do zrobienia - stos zadań za które użytkownik powinien się zabrać w najbliższym czasie np. w obecnym tygodniu
+ - W trakcie - stos zadań które są w trakcie wykonywania
+ - Gotowe - stos zadań zakończonych
+
+Do aplikacji użytkownik będzie wprowadzał dane zadanie z uwględnieniem co jest do zrobienia, do kiedy należy wykonać dane zadanie oraz ile szacunkowo ono zajmie. Dzięki podaniu tych danych aplikacja będzie w stanie posegregować dane zadania w kolejności zbliżających się terminów oraz zasugerować które zadania powinny zostać podjęte w oparciu o podany czas na wykonanie oraz czasem jaki pozostał do upłynięcia terminu wykonania. W ten sposób użytkownik będzie mógł śledzić postępy swojej pracy, nie zapomnieć o żadnym z nadchodzących terminów oraz zobaczyć efektywność z jaką wykonuje zadania w oparciu o statystyki związane z wykonaniem zadania przed lub po terminie.

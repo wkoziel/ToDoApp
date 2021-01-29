@@ -1,19 +1,20 @@
-body { 
+body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
+    text-align: center;
 }
 
-li, td { 
-    font-family: Arial, Helvetica, sans-serif; 
+li, td {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 13px; }
 
-hr { 
-    color: #3333cc; 
-    width: 300; 
+hr {
+    color: #3333cc;
+    width: 300;
     text-align: left;
 }
 
-a { 
-    color: #000000; 
+a {
+    color: #000000;
 }
 

@@ -11,10 +11,7 @@ function tworz_naglowek_html($tytul) {
     <link rel="stylesheet" type="text/css" href="styl.css" />
   </head>
   <body>
-  <img src="zakladka.gif" alt="Logo ZakładkaPHP" border="0"
-       align="left" valign="bottom" height = "55" width = "57" />
-  <h1>&nbsp;To Do App</h1>
-  <hr />
+  <h1>Inteligentny Planer</h1>
 <?php
   if($tytul) {
     tworz_tytul_html($tytul);
@@ -103,7 +100,7 @@ function wyswietl_form_rej() {
 
 }
 
-//do zmiany na wyswietl zadania 
+//do zmiany na wyswietl zadania
 function wyswietl_urle_uzyt($tablica_url) {
   //wyswietlenie URL-i użytkownika
 
@@ -165,17 +162,20 @@ function wyswietl_menu_uzyt() {
 <?php
 }
 
-//wyświetl dodaj zadanie 
+//wyświetl dodaj zadanie
 function wyswietl_dodaj_zadanie_form() {
-  // wyświetlenie formularza do dodania nowych zakładek
 ?>
-<form name="tabela_zak" action="dodaj_zak.php" method="post">
-<table width="250" cellpadding="2" cellspacing="0" bgcolor="#cccccc">
-<tr><td>Nowa zakładka:</td>
-<td><input type="text" name="nowy_url"  value="http://"
-                        size="30" maxlength="255"></td></tr>
-<tr><td colspan="2" align="center"><input type="submit" value="Dodaj zakładkę"></td></tr>
-</table>
+<form name="tabela_zadan" action="dodaj_zadanie.php" method="post">
+  <label for="zadanie">Zadanie:</label><br>
+  <textarea style="resize: none" name="zadanie" rows="5" cols="30"></textarea><br>
+
+  <label for="date">Data zakończenia:</label><br>
+  <input type="date" name="termin" min="2021-01-01"><br>
+
+  <label for="szacowny_czas">Szacowany czas(dni):</label><br>
+  <input type="number" name="szacowny_czas" min="1"><br>
+  <br>
+  <input type="submit">
 </form>
 <?php
 }
