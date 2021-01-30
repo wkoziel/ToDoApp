@@ -5,13 +5,15 @@
 function tworz_naglowek_html($tytul) {
   // wyświetlenie nagłówka HTML
 ?>
+  <!DOCTYPE html>
   <html>
   <head>
     <title><?php echo $tytul;?></title>
     <link rel="stylesheet" type="text/css" href="styl.css" />
   </head>
   <body>
-  <h1>Inteligentny Planer</h1>
+  <header>
+  <h1>INTELIGENTNY PLANER</h1>
 <?php
   if($tytul) {
     tworz_tytul_html($tytul);
@@ -21,6 +23,8 @@ function tworz_naglowek_html($tytul) {
 function tworz_stopke_html() {
   // wyświetlenie stopki HTML
 ?>
+  </main>
+  <footer><p>Projekt wykonany przez studentów grupy PI-A: Tatianę Cieślar, Piotra Hadama i Wojciecha Kozieła</p></footer>
   </body>
   </html>
 <?php
@@ -30,6 +34,8 @@ function tworz_tytul_html($tytul) {
   // wyświetlenie tytułu
 ?>
   <h2><?php echo $tytul;?></h2>
+  </header>
+  <main>
 <?php
 }
 
@@ -44,10 +50,12 @@ function wyswietl_informacje_witryny() {
   // wyświetlenie informacji marketingowych
 ?>
   <ul>
-  <li>Dodawaj nowe zadania
-  <li>Zobacz swoje najważniejsze obecnie zadania
-  <li>Rejestruj czas i sprawdź, jak efektywna jest Twoja praca
+  <li>Dodawaj nowe zadania</li>
+  <li>Zobacz swoje najważniejsze obecnie zadania</li>
+  <li>Rejestruj czas i sprawdź, jak efektywna jest Twoja praca</li>
   </ul>
+  </header>
+  <main>
 <?php
 }
 
@@ -101,35 +109,41 @@ function wyswietl_form_rej() {
 }
 
 //do zmiany na wyswietl zadania
-function wyswietl_zadania_uzyt($tablica_url) {
+function wyswietl_zadania_uzyt($tablica_zadan) {
   //wyswietlenie URL-i użytkownika
 
   // ustawienie zmiennej globalnej, aby możliwe było sprawdzanie strony
-  global $tabela_zak;
-  $tabela_zak = true;
+  //global $tabela_zak;
+  //$tabela_zak = true;
 ?>
   <br />
   <form name="tabela_zak" action="usun_zak.php" method="post">
   <table width="300" cellpadding="2" cellspacing="0">
   <?php
   $kolor = "#cccccc";
-  echo "<tr bgcolor=\"".$kolor."\"><td><strong>Zakładka</strong></td>";
+  echo "<tr bgcolor=\"".$kolor."\"><td><strong>Zadanie</strong></td>";
+  echo "<td><strong>Termin</strong></td>";
+  echo "<td><strong>Szacowany czas</strong></td>";
+  echo "<td><strong>Status</strong></td>";
   echo "<td><strong>Usuń?</strong></td></tr>";
-  if ((is_array($tablica_url)) && (count($tablica_url) > 0)) {
-    foreach ($tablica_url as $url) {
+  if ((is_array($tablica_zadan)) && (count($tablica_zadan) > 0)) {
+    foreach ($tablica_zadan as $zadanie) {
       if ($kolor == "#cccccc") {
         $kolor = "#ffffff";
       } else {
         $kolor = "#cccccc";
       }
       // należy pamiętać o wywołaniu htmlspecialchars() przy wyświetlaniu danych użytkownika
-      echo "<tr bgcolor=\"".$kolor."\"><td><a href=\"".$url."\">".htmlspecialchars($url)."</a></td>
+      echo "<tr bgcolor=\"".$kolor."\"><td>".htmlspecialchars($zadanie[2])."</td>
+            <td>".htmlspecialchars($zadanie[3])."</td>
+            <td>".htmlspecialchars($zadanie[4])."</td>
+            <td>".htmlspecialchars($zadanie[5])."</td>
             <td><input type=\"checkbox\" name=\"usun_mnie[]\"
-             value=\"".$url."\"/></td>
+             value=\"".$zadanie[0]."\"/></td>
             </tr>";
       }
   } else {
-    echo "<tr><td>Brak zapisanych zakładek</td></tr>";
+    echo "<tr><td>Brak zapisanych zadań</td></tr>";
   }
 ?>
   </table>
@@ -148,14 +162,13 @@ function wyswietl_menu_uzyt() {
   // opcja usuń jedynie w wypadku wyświetlenia tabeli zakładek
   global $tabela_zak;
   if($tabela_zak == true) {
-    echo "<a href=\"#\" onClick=\"tabela_zak.submit();\">Usuń zakładki</a>&nbsp;|&nbsp;";
+    echo "<a href=\"#\" onClick=\"tabela_zak.submit();\">Usuń zadanie</a>&nbsp;|&nbsp;";
   } else {
-    echo "<span style=\"color: #cccccc\">Usuń zakładki</span>&nbsp;|&nbsp;";
+    echo "<span style=\"color: #cccccc\">Usuń zadanie</span>&nbsp;|&nbsp;";
   }
 ?>
 <a href="zmiana_hasla_formularz.php">Zmiana hasła</a>
 <br />
-<a href="rekomendacja.php">Zarekomenduj URL-e</a> &nbsp;|&nbsp;
 <a href="wylog.php">Wylogowanie</a>
 <hr />
 

@@ -12,11 +12,13 @@ function pobierz_zadania_uzyt($nazwa_uz) {
   }
 
   // tworzenie tablicy zadań
-  //$tablica_url = array();
+  $wynik = $wynik->fetch_all();
+  $tablica_zadan = array(); 
   //for ($licznik = 0; $rzad = $wynik->fetch_row(); ++$licznik) {
-  //  $tablica_url[$licznik] = $rzad[0];
+  //  $tablica_zadan[$licznik] = $rzad[0];
   //}
-  //return $tablica_url;
+
+  return $wynik;
 }
 
 function dodaj_zadanie($nowe_zad, $nowy_termin, $nowy_czas) {
