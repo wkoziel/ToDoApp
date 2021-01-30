@@ -5,5 +5,6 @@
   require_once('funkcje_bazy.php');
   require_once('funkcje_uwierz.php');
   require_once('funkcje_wyswietl.php');
+  require_once('funkcje_zadania.php');
 ?>
 

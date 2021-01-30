@@ -101,7 +101,7 @@ function wyswietl_form_rej() {
 }
 
 //do zmiany na wyswietl zadania
-function wyswietl_urle_uzyt($tablica_url) {
+function wyswietl_zadania_uzyt($tablica_url) {
   //wyswietlenie URL-i użytkownika
 
   // ustawienie zmiennej globalnej, aby możliwe było sprawdzanie strony
@@ -143,7 +143,7 @@ function wyswietl_menu_uzyt() {
 ?>
 <hr />
 <a href="czlonek.php">Home</a> &nbsp;|&nbsp;
-<a href="dodaj_zak_formularz.php">Dodaj zakładkę</a> &nbsp;|&nbsp;
+<a href="dodaj_zadanie_formularz.php">Dodaj zadanie</a> &nbsp;|&nbsp;
 <?php
   // opcja usuń jedynie w wypadku wyświetlenia tabeli zakładek
   global $tabela_zak;
