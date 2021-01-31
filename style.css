@@ -65,7 +65,8 @@
       rgba(255, 255, 255, 0.3)
     );
     border-radius: 2rem;
-    height: 545px;
+    height: 570px;
+    margin-bottom: 15px;
   }
 
   a:link{

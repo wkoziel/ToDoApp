@@ -6,6 +6,7 @@ session_start();
 require_once('funkcje.php');
 
 // utworzenie krótkich nazw zmiennych
+
 $nazwa_uz = isset($_POST['nazwa_uz']) ? $_POST['nazwa_uz'] : '';
 $haslo = isset($_POST['haslo']) ? $_POST['haslo'] : '';
 
