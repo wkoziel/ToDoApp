@@ -30,9 +30,12 @@ if ($nazwa_uz && $haslo) {
 tworz_naglowek_html('Strona główna');
 sprawdz_prawid_uzyt();
 // odczytanie zadań użytkownika z bazy
-if ($tablica_zadan = pobierz_zadania_uzyt($_SESSION['prawid_uzyt'])) {
-  wyswietl_zadania_uzyt($tablica_zadan);
-}
+// if ($tablica_zadan = pobierz_zadania_uzyt($_SESSION['prawid_uzyt'])) {
+//   echo "Wchodzimy";
+//   wyswietl_zadania_uzyt($tablica_zadan);
+// }
+$tablica_zadan = pobierz_zadania_uzyt($_SESSION['prawid_uzyt']);
+wyswietl_zadania_uzyt($tablica_zadan);
 
 // tworzenie menu opcji
 wyswietl_menu_uzyt();

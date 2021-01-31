@@ -135,13 +135,21 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
 
   $tabela_zadan = true;
 ?>
-  
-  <br />
 
   
   <!-- <table width="300" cellpadding="2" cellspacing="0"> -->
   <?php
   $kolor = "#cccccc";
+
+  echo "<div class=\"link\">";
+  echo "<img src=\"https://img.icons8.com/flat_round/64/000000/home--v1.png\"/>";  
+  echo "<a href=\"czlonek.php\"><h2>Strona główna</h2></a>";
+  echo "</div>";
+  echo "<div class=\"link\">";
+  echo "<img src=\"https://img.icons8.com/flat_round/64/000000/plus.png\"/>";
+  echo "<a href=\"dodaj_zadanie_formularz.php\"><h2>Dodaj zadanie</h2></a>";
+  echo "</div>";
+  
   // echo "<tr bgcolor=\"".$kolor."\"><td><strong>Zadanie</strong></td>";
   // echo "<td><strong>Termin</strong></td>";
   // echo "<td><strong>Szacowany czas</strong></td>";
@@ -166,10 +174,10 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                     <p>Termin oddania: $zadanie->termin</p>
                     <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
                     <div class="progress">
-                      <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/>
+                      
                     </div>
                   </div>
-                  <h2 class="delete-task">Usuń zadanie</h2>
+                  <h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>
                 
         </div>
         XYZ;
@@ -185,7 +193,9 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                     <h2>$zadanie->zadanie</h2>
                     <p>Termin oddania: $zadanie->termin</p>
                     <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                    <div class="progress"></div>
+                    <div class="progress">
+                  
+                    </div>
                   </div>
                   <h2 class="delete-task">Usuń zadanie</h2>
                 
@@ -246,7 +256,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
               <a href="wylog.php"><h2>Wylogowanie</h2></a>
             </div>
   </div>
-          <div class="pro">
+          <div class="autorzy">
             <h2>Autorzy: <br> Tatiana Cieślar, Piotr Hadam, Wojciech Kozieł</h2>
           </div>
         </div>
@@ -296,30 +306,7 @@ function wyswietl_menu_uzyt() {
             
 <?php
 
-
-  // opcja usuń jedynie w wypadku wyświetlenia tabeli zakładek
-  global $tabela_zadan;
-  // if($tabela_zadan == true) {
-  //   echo "<div class=\"link\">";
-  //   echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
-  //   echo "<a href=\"#\" onClick=\"tabela_zadan.submit();\"><h2>Usuń zadania</h2></a>";
-  //   echo "</div>";
-  // } 
-  // else {
-  //   echo "<div class=\"link\">";
-  //   echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
-  //   echo "<span style=\"color: #cccccc\"><h2>Usuń zadania</h2></span>";
-  //   echo "</div>";
-
-  
-
-    
-  // }
 ?>
-
-  
-
-<!-- <hr /> -->
 
 <?php
 }
