@@ -117,7 +117,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
   $tabela_zadan = true;
 ?>
   <br />
-  <form name="tabela_zak" action="usun_zak.php" method="post">
+  <form name="tabela_zadan" action="usun_zadanie.php" method="post">
   <table width="300" cellpadding="2" cellspacing="0">
   <?php
   $kolor = "#cccccc";

@@ -17,10 +17,10 @@
   } else {
     if (count($usun_mnie) > 0) {
       foreach($usun_mnie as $zadanie) {
-        if (usun_zadanie($prawid_uzyt, $zadanie)) {
-          echo 'Usunięto '.htmlspecialchars($zadanie->zadanie).'.<br />';
+        if (usun_zadanie($zadanie)) {
+          echo 'Usunięto '.htmlspecialchars($zadanie).'.<br />';
         } else {
-          echo 'Nie udało się usunięcie '.htmlspecialchars($zadanie->zadanie).'.<br />';
+          echo 'Nie udało się usunięcie '.htmlspecialchars($zadanie).'.<br />';
         }
       }
     } else {
