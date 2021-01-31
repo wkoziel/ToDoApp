@@ -6,6 +6,8 @@
   $usun_mnie = isset($_POST['usun_mnie']) ? $_POST['usun_mnie'] : [];
   $prawid_uzyt = $_SESSION['prawid_uzyt'];
 
+  echo $usun_mnie;
+
   tworz_naglowek_html('Usuwanie zadań');
   sprawdz_prawid_uzyt();
   if (!wypelniony($_POST)) {
