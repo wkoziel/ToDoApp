@@ -113,8 +113,8 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
   //wyswietlenie URL-i użytkownika
 
   // ustawienie zmiennej globalnej, aby możliwe było sprawdzanie strony
-  //global $tabela_zak;
-  //$tabela_zak = true;
+  global $tabela_zadan;
+  $tabela_zadan = true;
 ?>
   <br />
   <form name="tabela_zak" action="usun_zak.php" method="post">
@@ -160,9 +160,9 @@ function wyswietl_menu_uzyt() {
 <a href="dodaj_zadanie_formularz.php">Dodaj zadanie</a> &nbsp;|&nbsp;
 <?php
   // opcja usuń jedynie w wypadku wyświetlenia tabeli zakładek
-  global $tabela_zak;
-  if($tabela_zak == true) {
-    echo "<a href=\"#\" onClick=\"tabela_zak.submit();\">Usuń zadanie</a>&nbsp;|&nbsp;";
+  global $tabela_zadan;
+  if($tabela_zadan == true) {
+    echo "<a href=\"#\" onClick=\"tabela_zadan.submit();\">Usuń zadanie</a>&nbsp;|&nbsp;";
   } else {
     echo "<span style=\"color: #cccccc\">Usuń zadanie</span>&nbsp;|&nbsp;";
   }

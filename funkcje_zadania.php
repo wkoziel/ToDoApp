@@ -43,7 +43,7 @@ function usun_zadanie($uzytkownik, $klasa) {
   $lacz = lacz_bd();
    // usunięcie zakładki
   if (!$lacz->query("delete from zadanie
-                     where nazwa_uz='".$uzytkownik."' and id='".$klasa->id."'")) {
+                     where id='".$klasa->id."'")) {
     throw new Exception('Usunięcie zadania nie powiodło się.');
   }
   return true;
