@@ -60,7 +60,16 @@ function sprawdz_prawid_uzyt() {
       echo "<h3>Zalogowano jako: </h3>";
       echo "<p>".$_SESSION['prawid_uzyt']."</p>";
       echo "</div>";
-      // echo "</div>";
+      echo "<div class=\"links\">";
+
+      echo "<div class=\"link\">";
+      echo "<img src=\"https://img.icons8.com/flat_round/64/000000/home--v1.png\"/>";  
+      echo "<a href=\"czlonek.php\"><h2>Strona główna</h2></a>";
+      echo "</div>";
+      echo "<div class=\"link\">";
+      echo "<img src=\"https://img.icons8.com/flat_round/64/000000/plus.png\"/>";
+      echo "<a href=\"dodaj_zadanie_formularz.php\"><h2>Dodaj zadanie</h2></a>";
+      echo "</div>";
   } else {
      // nie jest zalogowany
      tworz_naglowek_html('Problem:');

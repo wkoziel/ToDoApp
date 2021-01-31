@@ -24,6 +24,7 @@ function tworz_naglowek_html($tytul) {
 function tworz_stopke_html() {
   // wyświetlenie stopki HTML
 ?>
+  </section>
   </main>
   <!-- <footer><p>Projekt wykonany przez studentów grupy PI-A: Tatianę Cieślar, Piotra Hadama i Wojciecha Kozieła</p></footer> -->
   </body>
@@ -131,13 +132,13 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
   global $done;
   global $during;
 
+
   $tabela_zadan = true;
 ?>
   
   <br />
 
-
-  <form name="tabela_zadan" action="usun_zadanie.php" method="post">
+  
   <!-- <table width="300" cellpadding="2" cellspacing="0"> -->
   <?php
   $kolor = "#cccccc";
@@ -172,8 +173,6 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                 
         </div>
         XYZ;
-
-        //echo $usun_mnie;
         
         
       }
@@ -222,9 +221,37 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
   } else {
     echo "<tr><td>Brak zapisanych zadań</td></tr>";
   }
+
+  if($tabela_zadan == true) {
+    echo "<div class=\"link\">";
+    echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
+    echo "<a href=\"#\" onClick=\"tabela_zadan.submit();\"><h2>Usuń zadania</h2></a>";
+    echo "</div>";
+  } 
+  else {
+    echo "<div class=\"link\">";
+    echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
+    echo "<span style=\"color: #cccccc\"><h2>Usuń zadania</h2></span>";
+    echo "</div>";
+  }
 ?>
-  <!-- </table> -->
+
   
+  <div class="link">
+              <img src="https://img.icons8.com/nolan/64/re-enter-pincode.png"/>
+              <a href="zmiana_hasla_formularz.php"><h2>Zmiana hasła</h2></a>
+  </div>
+            <div class="link">
+              <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>
+              <a href="wylog.php"><h2>Wylogowanie</h2></a>
+            </div>
+  </div>
+          <div class="pro">
+            <h2>Autorzy: <br> Tatiana Cieślar, Piotr Hadam, Wojciech Kozieł</h2>
+          </div>
+        </div>
+
+  <form name="tabela_zadan" action="usun_zadanie.php" method="post">
 
   <div class="tasks">
           <div class="statuses">
@@ -257,7 +284,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
           </div> <!--statuses-->
   </div> <!--tasks-->
   </form>
-  </section>
+  
 <?php
 }
 
@@ -265,54 +292,32 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
 function wyswietl_menu_uzyt() {
   // wyświetlenie menu opcji na stronie
 ?>
-<!-- <hr /> -->
-
-          <div class="links">
-            <div class="link">
-              <img src="https://img.icons8.com/flat_round/64/000000/home--v1.png"/>
-              
-              <a href="czlonek.php"><h2>Strona główna</h2></a>
-            </div>
-            <div class="link">
-              <img src="https://img.icons8.com/flat_round/64/000000/plus.png"/>
-              
-              <a href="dodaj_zadanie_formularz.php"><h2>Dodaj zadanie</h2></a>
-              
-            </div>
-
+  
             
 <?php
+
+
   // opcja usuń jedynie w wypadku wyświetlenia tabeli zakładek
   global $tabela_zadan;
-  if($tabela_zadan == true) {
-    echo "<div class=\"link\">";
-    echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
-    echo "<a href=\"#\" onClick=\"tabela_zadan.submit();\"><h2>Usuń zadania</h2></a>";
-    echo "</div>";
-  } 
-  else {
-    echo "<div class=\"link\">";
-    echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
-    echo "<span style=\"color: #cccccc\"><h2>Usuń zadanie</h2></span>";
-    echo "</div>";
+  // if($tabela_zadan == true) {
+  //   echo "<div class=\"link\">";
+  //   echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
+  //   echo "<a href=\"#\" onClick=\"tabela_zadan.submit();\"><h2>Usuń zadania</h2></a>";
+  //   echo "</div>";
+  // } 
+  // else {
+  //   echo "<div class=\"link\">";
+  //   echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
+  //   echo "<span style=\"color: #cccccc\"><h2>Usuń zadania</h2></span>";
+  //   echo "</div>";
+
+  
 
     
-  }
+  // }
 ?>
 
-  <div class="link">
-              <img src="https://img.icons8.com/nolan/64/re-enter-pincode.png"/>
-              <a href="zmiana_hasla_formularz.php"><h2>Zmiana hasła</h2></a>
-  </div>
-            <div class="link">
-              <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>
-              <a href="wylog.php"><h2>Wylogowanie</h2></a>
-            </div>
-</div>
-          <div class="pro">
-            <h2>Autorzy: <br> Tatiana Cieślar, Piotr Hadam, Wojciech Kozieł</h2>
-          </div>
-        </div>
+  
 
 <!-- <hr /> -->
 
