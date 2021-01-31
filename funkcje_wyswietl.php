@@ -134,12 +134,12 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
         $kolor = "#cccccc";
       }
       // należy pamiętać o wywołaniu htmlspecialchars() przy wyświetlaniu danych użytkownika
-      echo "<tr bgcolor=\"".$kolor."\"><td>".htmlspecialchars($zadanie[2])."</td>
-            <td>".htmlspecialchars($zadanie[3])."</td>
-            <td>".htmlspecialchars($zadanie[4])."</td>
-            <td>".htmlspecialchars($zadanie[5])."</td>
+      echo "<tr bgcolor=\"".$kolor."\"><td>".htmlspecialchars($zadanie->zadanie)."</td>
+            <td>".htmlspecialchars($zadanie->termin)."</td>
+            <td>".htmlspecialchars($zadanie->szacowany_czas)."</td>
+            <td>".htmlspecialchars($zadanie->kolumna)."</td>
             <td><input type=\"checkbox\" name=\"usun_mnie[]\"
-             value=\"".$zadanie[0]."\"/></td>
+             value=\"".$zadanie->id."\"/></td>
             </tr>";
       }
   } else {

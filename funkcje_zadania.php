@@ -11,14 +11,14 @@ function pobierz_zadania_uzyt($nazwa_uz) {
     return false;
   }
 
-  // tworzenie tablicy zadań
-  $wynik = $wynik->fetch_all();
-  $tablica_zadan = array(); 
-  //for ($licznik = 0; $rzad = $wynik->fetch_row(); ++$licznik) {
-  //  $tablica_zadan[$licznik] = $rzad[0];
-  //}
-
-  return $wynik;
+  $rezultaty = array();
+  //$wynik = $wynik->fetch_object('Zadanie');
+  while($obj = $wynik->fetch_object())
+  {
+    array_push($rezultaty, $obj);
+  }
+  
+  return $rezultaty;
 }
 
 function dodaj_zadanie($nowe_zad, $nowy_termin, $nowy_czas) {
@@ -38,12 +38,12 @@ function dodaj_zadanie($nowe_zad, $nowy_termin, $nowy_czas) {
   return true;
 }
 
-function usun_zadanie($uzytkownik, $id) {
+function usun_zadanie($uzytkownik, $klasa) {
   // usunięcie jednego URL-a z bazy danych
   $lacz = lacz_bd();
    // usunięcie zakładki
   if (!$lacz->query("delete from zadanie
-                     where nazwa_uz='".$uzytkownik."' and id='".$id."'")) {
+                     where nazwa_uz='".$uzytkownik."' and id='".$klasa->id."'")) {
     throw new Exception('Usunięcie zadania nie powiodło się.');
   }
   return true;
