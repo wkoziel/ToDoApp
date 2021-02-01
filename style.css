@@ -355,3 +355,16 @@ input[type=text], input[type=password]{
 
 }
 
+
+/* AUTOFILL Z CHROME */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color:  #658ec6;
+}
+
