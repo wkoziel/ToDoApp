@@ -231,7 +231,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                       <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
                     </div>
                   </div>
-                
+                </div>
         </div>
         XYZ;
 
