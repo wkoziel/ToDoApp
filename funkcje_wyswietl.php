@@ -121,6 +121,12 @@ function wyswietl_form_rej() {
 
 }
 
+function date_compare($element1, $element2) { 
+  $datetime1 = strtotime($element1->termin); 
+  $datetime2 = strtotime($element2->termin); 
+  return $datetime1 - $datetime2; 
+}  
+
 //do zmiany na wyswietl zadania
 function wyswietl_zadania_uzyt($tablica_zadan) {
   //wyswietlenie URL-i użytkownika
@@ -156,6 +162,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
   // echo "<td><strong>Usuń?</strong></td></tr>";
   if ((is_array($tablica_zadan)) && (count($tablica_zadan) > 0)) 
   {
+    usort($tablica_zadan, 'date_compare'); 
     foreach ($tablica_zadan as $zadanie) {
       if ($kolor == "#cccccc") {
         $kolor = "#ffffff";

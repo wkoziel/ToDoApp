@@ -37,7 +37,7 @@ function pobierz_zadania_uzyt($nazwa_uz) {
   {
     array_push($rezultaty, $obj);
   }
-
+  
   return $rezultaty;
 }
 
