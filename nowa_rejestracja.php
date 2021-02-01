@@ -48,13 +48,9 @@
 
 
      // stworzenie łącza do strony członkowskiej
-     tworz_naglowek_html('Rejestracja pomyślna');
-     echo 'Rejestracja zakończyła się sukcesem. Proszę udać się na stronę '
-         .'członkowską aby skonfigurować swoje zakładki!';
-     tworz_HTML_URL('czlonek.php', 'Strona członkowska');
-
-     // koniec strony
-     tworz_stopke_html();
+      $host  = $_SERVER['HTTP_HOST'];
+      $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+      header("Location: http://$host$uri/czlonek.php");
    }
    catch (Exception $e) {
      tworz_naglowek_html('Problem:');

@@ -25,7 +25,9 @@
 
     // próba uaktualnienia
     zmien_haslo($_SESSION['prawid_uzyt'], $stare_haslo, $nowe_haslo);
-    echo 'Hasło zmienione.';
+   $host  = $_SERVER['HTTP_HOST'];
+   $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+   header("Location: http://$host$uri/czlonek.php");
  }
  catch (Exception $e) {
     echo $e->getMessage();

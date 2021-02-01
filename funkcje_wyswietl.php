@@ -103,12 +103,12 @@ function wyswietl_form_log() {
       <table class="center">
         <tr>
         <td><h3>Nazwa użytkownika: </h3></td>
-        <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16"/></td></tr>
+        <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16" required/></td></tr>
         </tr>
 
         <tr>
         <td><h3>Hasło: </h3></td>
-        <td valign="top"><input type="password" name="haslo" size="16" maxlength="16"/></td></tr>
+        <td valign="top"><input type="password" name="haslo" size="16" maxlength="16" required/></td></tr>
         </tr>
       </table>
 
@@ -144,16 +144,16 @@ function wyswietl_form_rej() {
  <table class="center">
    <tr>
      <td><h3>Adres poczty elektronicznej:</h3></td>
-     <td><input type="text" name="email" size="35" maxlength="100"></td></tr>
+     <td><input type="text" name="email" size="35" maxlength="100" required></td></tr>
    <tr>
      <td><h3>Nazwa użytkownika:</h3></td>
-     <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16"/></td></tr>
+     <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16" required/></td></tr>
    <tr>
      <td><h3>Hasło:</h3></td>
-     <td valign="top"><input type="password" name="haslo" size="16" maxlength="16"/></td></tr>
+     <td valign="top"><input type="password" name="haslo" size="16" maxlength="16" required/></td></tr>
    <tr>
      <td><h3>Potwierdź hasło:</h3></td>
-     <td><input type="password" name="haslo2" size="16" maxlength="16"/></td></tr>
+     <td><input type="password" name="haslo2" size="16" maxlength="16" required/></td></tr>
 
       
  </table>
@@ -308,7 +308,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
         XYZ;
       }
       else if ($zadanie->kolumna == "gotowe")
-      {        
+      {  
         $datetime1 = strtotime($zadanie->termin); 
         $datetime2 = strtotime($zadanie->ukonczono);
         $roznica = ($datetime1-$datetime2) / 86400;
@@ -464,13 +464,13 @@ function wyswietl_dodaj_zadanie_form() {
 <form name="tabela_zadan" action="dodaj_zadanie.php" method="post">
   <h1>Dodaj zadanie:</h1>
   <label for="zadanie"><h3>Zadanie:</h3></label><br>
-  <textarea style="resize: none" name="zadanie" rows="6" cols="29"></textarea><br>
+  <textarea style="resize: none" name="zadanie" rows="6" cols="29" required></textarea><br>
 
   <label for="date"><h3>Data zakończenia:</h3></label><br>
-  <input type="date" name="termin" min="2021-01-01"><br>
+  <input type="date" name="termin" min="2021-01-01" required><br>
 
   <label for="szacowny_czas"><h3>Szacowany czas(dni):</h3></label><br>
-  <input type="number" name="szacowny_czas" min="1"><br>
+  <input type="number" name="szacowny_czas" min="1" required><br>
   <br>
 
   <div class="mini-stopka">
@@ -499,15 +499,15 @@ function wyswietl_haslo_form() {
    <form action="zmiana_hasla.php" method="post">
    <table width="250" cellpadding="2" cellspacing="0">
    <tr><td>Poprzednie hasło:</td>
-       <td><input type="password" name="stare_haslo" size="16" maxlength="16"/></td>
+       <td><input type="password" name="stare_haslo" size="16" maxlength="16" required/></td>
    </tr>
    <tr><td>Nowe hasło:</td>
-       <td><input type="password" name="nowe_haslo" size="16" maxlength="16"/></td>
+       <td><input type="password" name="nowe_haslo" size="16" maxlength="16" required/></td>
    </tr>
    <tr><td>Powtórzenie nowego hasła:</td>
-       <td><input type="password" name="nowe_haslo2" size="16" maxlength="16"/></td>
+       <td><input type="password" name="nowe_haslo2" size="16" maxlength="16" required/></td>
    </tr>
-   <tr><td colspan="2" align="center"><input type="submit" value="Zmiana hasła"/>
+   <tr><td colspan="2" ><input type="submit" value="Zmiana hasła"/>
    </td></tr>
    </table>
    <br />
@@ -519,11 +519,11 @@ function wyswietl_zapomnij_form() {
 ?>
    <br />
    <form action="zapomnij_haslo.php" method="post">
-   <table width="250" cellpadding="2" cellspacing="0" bgcolor="#cccccc">
+   <table width="250" cellpadding="2" cellspacing="0">
    <tr><td>Nazwa użytkownika</td>
        <td><input type="text" name="nazwa_uz" size="16" maxlength="16"/></td>
    </tr>
-   <tr><td colspan="2" align="center"><input type="submit" value="Zmiana hasła"/>
+   <tr><td colspan="2"><input type="submit" value="Zmiana hasła"/>
    </td></tr>
    </table>
    <br />
