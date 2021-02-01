@@ -146,10 +146,10 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
   <?php
   $kolor = "#cccccc";
 
-  // echo "<div class=\"link\">";
-  // echo "<img src=\"https://img.icons8.com/flat_round/64/000000/home--v1.png\"/>";  
-  // echo "<a href=\"czlonek.php\"><h2>Strona główna</h2></a>";
-  // echo "</div>";
+  echo "<div class=\"link\">";
+  echo "<img src=\"https://img.icons8.com/flat_round/64/000000/home--v1.png\"/>";  
+  echo "<a href=\"czlonek.php\"><h2>Strona główna</h2></a>";
+  echo "</div>";
   echo "<div class=\"link\">";
   echo "<img src=\"https://img.icons8.com/flat_round/64/000000/plus.png\"/>";
   echo "<a href=\"dodaj_zadanie_formularz.php\"><h2>Dodaj zadanie</h2></a>";

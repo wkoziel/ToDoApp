@@ -216,7 +216,11 @@ input[type=submit], .mini-stopka p {
 
   border: 2px solid #65dfc9;
 
-  color:#426696;
+  color: #426696;
+
+
+  font-family: "Poppins", sans-serif;
+  
   padding: 20px 40px 20px 40px;
   font-size: 18px;
   font-weight: 800;
@@ -237,7 +241,7 @@ input[type=number], input[type=date]{
   text-align: center;
   outline:none;
   
-  color:#426696;
+  color: #658ec6;
   font-weight: 500;
   font-size: 16px;
 
@@ -247,7 +251,7 @@ input[type=number], input[type=date]{
 }
 
 textarea{
-  color:#426696;
+  color: #658ec6;
   font-weight: 500;
   padding: 16px;
   border-radius: 2rem;
@@ -267,7 +271,7 @@ textarea{
 
   border: 2px solid #65dfc9;
 
-  color:#426696;
+  
   padding: 20px 20px 20px 20px;
   font-size: 14px;
   font-weight: 800;
@@ -284,7 +288,7 @@ a:stopka-link{
 }
 .stopka-link h2 {
   padding: 0rem 10px;
-  color:#426696;
+  
   font-weight: 500;
   font-size: 16px;
 }
