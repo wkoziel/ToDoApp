@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 30 Sty 2021, 18:55
+-- Czas generowania: 01 Lut 2021, 19:21
 -- Wersja serwera: 10.4.16-MariaDB
 -- Wersja PHP: 7.4.12
 
@@ -52,15 +52,21 @@ CREATE TABLE `zadanie` (
   `zadanie` varchar(255) COLLATE utf8mb4_polish_ci NOT NULL,
   `termin` date NOT NULL,
   `szacowany_czas` int(11) NOT NULL,
-  `kolumna` enum('do_zrobienia','w_trakcie','gotowe','') COLLATE utf8mb4_polish_ci NOT NULL
+  `kolumna` enum('do_zrobienia','w_trakcie','gotowe','') COLLATE utf8mb4_polish_ci NOT NULL,
+  `ukonczono` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Zrzut danych tabeli `zadanie`
 --
 
-INSERT INTO `zadanie` (`id`, `nazwa_uz`, `zadanie`, `termin`, `szacowany_czas`, `kolumna`) VALUES
-(2, 'piotr', 'Zrobić zadanie dla Żabola', '2021-02-05', 5, 'do_zrobienia');
+INSERT INTO `zadanie` (`id`, `nazwa_uz`, `zadanie`, `termin`, `szacowany_czas`, `kolumna`, `ukonczono`) VALUES
+(6, 'piotr', 'Zrobić projekt', '2021-02-03', 2, 'do_zrobienia', NULL),
+(7, 'piotr', 'Nagrać film', '2021-02-05', 1, 'w_trakcie', '2021-02-01'),
+(9, 'piotr', 'Zadanie', '2021-02-27', 3, 'gotowe', '2021-02-01'),
+(11, 'piotr', 'Teścik', '2021-02-26', 12, 'do_zrobienia', '2021-02-01'),
+(12, 'piotr', 'Zadanie 1', '2021-01-31', 3, 'gotowe', '2021-02-01'),
+(13, 'piotr', 'Zadanko', '2021-02-01', 1, 'gotowe', '2021-02-01');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -86,7 +92,7 @@ ALTER TABLE `zadanie`
 -- AUTO_INCREMENT dla tabeli `zadanie`
 --
 ALTER TABLE `zadanie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -252,26 +252,80 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
         XYZ;
       }
       else if ($zadanie->kolumna == "gotowe")
-      {
-        $done .= <<<XYZ
-        <div class="card">
-                 
-                  <div class="card-info">
-                    <h2>$zadanie->zadanie</h2>
-                    <p>Termin oddania: $zadanie->termin</p>
-                    <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                    <div class="progress"></div>
-                    <div class="dropdown">
-                      <button class="dropbtn">Opcje</button>
-                      <div class="dropdown-content">
-                      <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                      <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
-                      <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+      {        
+        $datetime1 = strtotime($zadanie->termin); 
+        $datetime2 = strtotime($zadanie->ukonczono);
+        $roznica = ($datetime1-$datetime2) / 86400;
+        
+        if ($roznica > 0)
+          $done .= <<<XYZ
+          <div class="card">
+                  
+                    <div class="card-info">
+                      <h2>$zadanie->zadanie</h2>
+                      <p>Termin oddania: $zadanie->termin</p>
+                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+                      <div class="progress">
+                        <p> Ukończono $roznica dni przed terminem </p>
+                      </div>
+                      <div class="dropdown">
+                        <button class="dropbtn">Opcje</button>
+                        <div class="dropdown-content">
+                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                        <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-        </div>
-        XYZ;
+          </div>
+          XYZ;
+        else if ($roznica < 0)
+        {
+          $roznica = $roznica * -1;
+          $done .= <<<XYZ
+          <div class="card">
+                  
+                    <div class="card-info">
+                      <h2>$zadanie->zadanie</h2>
+                      <p>Termin oddania: $zadanie->termin</p>
+                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+                      <div class="progress">
+                        <p> Ukończono $roznica dni po terminie </p>
+                      </div>
+                      <div class="dropdown">
+                        <button class="dropbtn">Opcje</button>
+                        <div class="dropdown-content">
+                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                        <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+                      </div>
+                    </div>
+                  </div>
+          </div>
+          XYZ;
+        }
+        else
+          $done .= <<<XYZ
+          <div class="card">
+                  
+                    <div class="card-info">
+                      <h2>$zadanie->zadanie</h2>
+                      <p>Termin oddania: $zadanie->termin</p>
+                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+                      <div class="progress">
+                        <p> Ukończono w terminie </p>
+                      </div>
+                      <div class="dropdown">
+                        <button class="dropbtn">Opcje</button>
+                        <div class="dropdown-content">
+                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                        <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+                      </div>
+                    </div>
+                  </div>
+          </div>
+          XYZ;
 
       }
       // należy pamiętać o wywołaniu htmlspecialchars() przy wyświetlaniu danych użytkownika

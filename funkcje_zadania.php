@@ -98,7 +98,8 @@ function przenies_do_do_zrobienia($id) {
 
 function przenies_do_gotowe($id) {
   $lacz = lacz_bd();
-  if (!$lacz->query("update zadanie set kolumna='gotowe'
+  $aktualna_data = date("Y-m-d");
+  if (!$lacz->query("update zadanie set kolumna='gotowe', ukonczono='".$aktualna_data."'
                      where id='".$id."'")) {
     throw new Exception('Przeniesienie zadania nie powiodło się.');
   }
