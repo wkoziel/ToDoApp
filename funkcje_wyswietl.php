@@ -38,16 +38,15 @@ function tworz_tytul_html($tytul) {
   <!-- <h2><?php echo $tytul;?></h2> -->
   </header>
   <main>
-  
+
   <section class="glass">
     <div class="dashboard">
 
 
-  <?php 
+  <?php
   global $newlinks;
   echo $newlinks;
   ?>
-            
 <?php
 }
 
@@ -75,11 +74,13 @@ function wyswietl_informacje_witryny() {
 
 function wyswietl_form_log() {
 ?>
-  <p><a href="formularz_rejestracji.php">Nie masz jeszcze konta?</a></p>
+
   <form method="post" action="czlonek.php">
-  <table bgcolor="#cccccc">
+  <table>
+  <tr>
+    <td colspan="2"><p><a href="formularz_rejestracji.php">Zarejestruj się</a></p><br></td>
    <tr>
-     <td colspan="2">Logowanie członków:</td>
+     <td colspan="2">Logowanie:</td>
    <tr>
      <td>Nazwa użytkownika:</td>
      <td><input type="text" name="nazwa_uz"/></td></tr>
@@ -87,7 +88,7 @@ function wyswietl_form_log() {
      <td>Hasło:</td>
      <td><input type="password" name="haslo"/></td></tr>
    <tr>
-     <td colspan="2" align=center>
+     <td colspan="2">
      <input type="submit" value="Logowanie"/></td></tr>
    <tr>
      <td colspan="2"><a href="zapomnij_formularz.php">Zapomniane hasło?</a></td>
@@ -99,23 +100,21 @@ function wyswietl_form_log() {
 function wyswietl_form_rej() {
 ?>
  <form method="post" action="nowa_rejestracja.php">
- <table bgcolor="#cccccc">
+ <table>
    <tr>
      <td>Adres poczty elektronicznej:</td>
      <td><input type="text" name="email" size="30" maxlength="100"></td></tr>
    <tr>
-     <td>Preferowana nazwa użytkownika <br />(maksymalnie 16 znaków):</td>
-     <td valign="top"><input type="text" name="nazwa_uz"
-                     size="16" maxlength="16"/></td></tr>
+     <td>Nazwa użytkownika</td>
+     <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16"/></td></tr>
    <tr>
-     <td>Hasło <br />(pomiędzy 6 i 16 znaków):</td>
-     <td valign="top"><input type="password" name="haslo"
-                     size="16" maxlength="16"/></td></tr>
+     <td>Hasło:</td>
+     <td valign="top"><input type="password" name="haslo" size="16" maxlength="16"/></td></tr>
    <tr>
      <td>Potwierdź hasło:</td>
      <td><input type="password" name="haslo2" size="16" maxlength="16"/></td></tr>
    <tr>
-     <td colspan="2" align="center">
+     <td colspan="2">
      <input type="submit" value="Rejestracja"></td></tr>
  </table></form>
 <?php
@@ -352,7 +351,7 @@ function wyswietl_haslo_form() {
 ?>
    <br />
    <form action="zmiana_hasla.php" method="post">
-   <table width="250" cellpadding="2" cellspacing="0" bgcolor="#cccccc">
+   <table width="250" cellpadding="2" cellspacing="0">
    <tr><td>Poprzednie hasło:</td>
        <td><input type="password" name="stare_haslo" size="16" maxlength="16"/></td>
    </tr>

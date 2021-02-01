@@ -37,7 +37,7 @@ function pobierz_zadania_uzyt($nazwa_uz) {
   {
     array_push($rezultaty, $obj);
   }
-  
+
   return $rezultaty;
 }
 
@@ -62,7 +62,7 @@ function dodaj_zadanie($nowe_zad, $nowy_termin, $nowy_czas) {
 
 function usun_zadanie($id) {
   // usunięcie jednego URL-a z bazy danych
-  
+
   $lacz = lacz_bd();
    // usunięcie zakładki
   if (!$lacz->query("delete from zadanie
@@ -75,10 +75,7 @@ function usun_zadanie($id) {
 }
 
 function przenies_do_w_trakcie($id) {
-  // usunięcie jednego URL-a z bazy danych
-  
   $lacz = lacz_bd();
-   // usunięcie zakładki
   if (!$lacz->query("update zadanie set kolumna='w_trakcie'
                      where id='".$id."'")) {
     throw new Exception('Przeniesienie zadania nie powiodło się.');
