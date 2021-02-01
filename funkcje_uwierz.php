@@ -170,12 +170,12 @@ function powiadom_haslo($nazwa_uz, $haslo) {
     else {
       $wiersz = $wynik->fetch_object();
       $email = $wiersz->email;
-      $od = "From: obsluga@zakladkaphp \r\n";
-      $wiad = "Hasło systemu ZakładkaPHP zostało zmienione na $haslo \r\n"
+      $od = "From: obsluga@zadanie.pl \r\n";
+      $wiad = "Hasło systemu Inteligentny Planer zostało zmienione na $haslo \r\n"
               ."Proszę zmienić je przy następnym logowaniu. \r\n";
 
 
-      if (mail($email, 'Informacja o logowaniu ZakładkaPHP', $wiad, $od)) {
+      if (mail($email, 'Informacja o logowaniu', $wiad, $od)) {
         return true;
       } 
       else {
