@@ -111,11 +111,7 @@ function wyswietl_form_log() {
         <td valign="top"><input type="password" name="haslo" size="16" maxlength="16"/></td></tr>
         </tr>
       </table>
-     <!-- <h3>Nazwa użytkownika: </h3>
-     <input type="text" name="nazwa_uz"/> -->
 
-     <!-- <h3>Hasło: </h3> 
-     <input type="password" name="haslo"/> -->
      <br> <br>
 
      <div class="mini-stopka">
@@ -142,24 +138,41 @@ function wyswietl_form_log() {
 
 function wyswietl_form_rej() {
 ?>
+  <h1>REJESTRACJA</h1>
+  <br>
  <form method="post" action="nowa_rejestracja.php">
- <table>
+ <table class="center">
    <tr>
-     <td>Adres poczty elektronicznej:</td>
-     <td><input type="text" name="email" size="30" maxlength="100"></td></tr>
+     <td><h3>Adres poczty elektronicznej:</h3></td>
+     <td><input type="text" name="email" size="35" maxlength="100"></td></tr>
    <tr>
-     <td>Nazwa użytkownika</td>
+     <td><h3>Nazwa użytkownika:</h3></td>
      <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16"/></td></tr>
    <tr>
-     <td>Hasło:</td>
+     <td><h3>Hasło:</h3></td>
      <td valign="top"><input type="password" name="haslo" size="16" maxlength="16"/></td></tr>
    <tr>
-     <td>Potwierdź hasło:</td>
+     <td><h3>Potwierdź hasło:</h3></td>
      <td><input type="password" name="haslo2" size="16" maxlength="16"/></td></tr>
-   <tr>
-     <td colspan="2">
-     <input type="submit" value="Rejestracja"></td></tr>
- </table></form>
+
+      
+ </table>
+ <br> <br>
+
+ <div class="mini-stopka">
+      <div class="stopka-link">
+      <a href="zapomnij_formularz.php"><h2>Zapomniane hasło?</h2></a>
+      </div>
+
+      <input type="submit" value="Zarejestruj się">
+
+      <div class="stopka-link">
+      <a href="logowanie.php"><h2>Masz już konto?<br>Zaloguj się</h2></a>
+      </div>
+
+     </div>
+
+</form>
 <?php
 
 }

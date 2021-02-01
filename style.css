@@ -239,7 +239,7 @@ textarea{
   outline: none;
 }
 
-input[type=number], input[type=date], input[type=text], input[type=password]{
+input[type=number], input[type=date]{
   min-width: 270px;
   min-height: 50px;
   text-align: center;
@@ -275,7 +275,7 @@ textarea{
 .mini-stopka p {
   background: linear-gradient(to right top, #65dfc9, #6cdbeb);
   border-radius: 2rem;
-
+ 
   border: 2px solid #65dfc9;
 
   padding: 20px 20px 20px 20px;
@@ -339,4 +339,19 @@ input[type=text], input[type=password]{
   text-align: left;
   padding: 0px 15px 0px 15px;
   margin: 5px;
+  color: #658ec6;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  border-radius: 2rem;
+
+  border: 2px solid #65dfc9;
+
+  min-width: 270px;
+  min-height: 50px;
+
+  outline:none;
+
 }
+
