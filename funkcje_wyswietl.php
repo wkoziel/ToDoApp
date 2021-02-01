@@ -44,8 +44,7 @@ function tworz_tytul_html($tytul) {
 
 
   <?php
-  global $newlinks;
-  echo $newlinks;
+  
   ?>
 <?php
 }
@@ -62,38 +61,82 @@ function tworz_HTML_URL($url, $nazwa) {
 function wyswietl_informacje_witryny() {
   // wyświetlenie informacji marketingowych
 ?>
-  <ul>
-  <li>Dodawaj nowe zadania</li>
-  <li>Zobacz swoje najważniejsze obecnie zadania</li>
-  <li>Rejestruj czas i sprawdź, jak efektywna jest Twoja praca</li>
-  </ul>
+  <!-- <h1>Dodawaj nowe zadania</h1>
+  <h1>Zobacz swoje najważniejsze obecnie zadania</h1>
+  <h1>Rejestruj czas i sprawdź, jak efektywna jest Twoja praca</h1> -->
+
   </header>
   <main>
+
+  <section class="glass">
+    <div class="dashboard">
+  
 <?php
 }
 
 function wyswietl_form_log() {
 ?>
+  <div class="marketing">
+    <h1>Dodawaj nowe zadania,</h1>
+    <h1>Zobacz swoje najważniejsze obecnie zadania,</h1>
+    <h1>Rejestruj czas i sprawdź, jak efektywna jest Twoja praca!</h1>
+  </div>
+  
+  <br>
+  <!-- <hr size="6" color="#426696"> -->
+  <br>
 
   <form method="post" action="czlonek.php">
-  <table>
-  <tr>
-    <td colspan="2"><p><a href="formularz_rejestracji.php">Zarejestruj się</a></p><br></td>
-   <tr>
-     <td colspan="2">Logowanie:</td>
-   <tr>
-     <td>Nazwa użytkownika:</td>
-     <td><input type="text" name="nazwa_uz"/></td></tr>
-   <tr>
-     <td>Hasło:</td>
-     <td><input type="password" name="haslo"/></td></tr>
-   <tr>
-     <td colspan="2">
-     <input type="submit" value="Logowanie"/></td></tr>
-   <tr>
-     <td colspan="2"><a href="zapomnij_formularz.php">Zapomniane hasło?</a></td>
-   </tr>
- </table></form>
+  
+    
+    
+
+    <div class="logging">
+      <!-- <hr size="6" width="30%" color="#426696"> -->
+      <h1>LOGOWANIE</h1>
+      <!-- <hr size="6" width="30%" color="#426696"> -->
+    </div>
+     
+       <br>
+       
+
+      <table class="center">
+        <tr>
+        <td><h3>Nazwa użytkownika: </h3></td>
+        <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16"/></td></tr>
+        </tr>
+
+        <tr>
+        <td><h3>Hasło: </h3></td>
+        <td valign="top"><input type="password" name="haslo" size="16" maxlength="16"/></td></tr>
+        </tr>
+      </table>
+     <!-- <h3>Nazwa użytkownika: </h3>
+     <input type="text" name="nazwa_uz"/> -->
+
+     <!-- <h3>Hasło: </h3> 
+     <input type="password" name="haslo"/> -->
+     <br> <br>
+
+     <div class="mini-stopka">
+      
+      <div class="stopka-link">
+      <a href="zapomnij_formularz.php"><h2>Zapomniane hasło?</h2></a>
+      </div>
+
+      <input type="submit" value="Zaloguj się"/>
+
+      <div class="stopka-link">
+      <a href="formularz_rejestracji.php"><h2>Nie masz konta? <br>Zarejestruj się</h2></a>
+      </div>
+      
+      
+      
+     </div>
+     
+   </form>
+</div> <!--koniec div dashboard-->
+
 <?php
 }
 
@@ -329,13 +372,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
 
       }
       // należy pamiętać o wywołaniu htmlspecialchars() przy wyświetlaniu danych użytkownika
-      // echo "<tr bgcolor=\"".$kolor."\"><td>".htmlspecialchars($zadanie->zadanie)."</td>
-      //       <td>".htmlspecialchars($zadanie->termin)."</td>
-      //       <td>".htmlspecialchars($zadanie->szacowany_czas)."</td>
-      //       <td>".htmlspecialchars($zadanie->kolumna)."</td>
-      //       <td><input type=\"checkbox\" name=\"usun_mnie[]\"
-      //        value=\"".$zadanie->id."\"/></td>
-      //       </tr>";
+      
       }
   } else {
     //echo "<tr><td>Brak zapisanych zadań</td></tr>";

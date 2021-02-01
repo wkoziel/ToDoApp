@@ -67,9 +67,11 @@ main {
     rgba(255, 255, 255, 0.7),
     rgba(255, 255, 255, 0.3)
   );
+  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
   border-radius: 2rem;
   /* height: 570px; */
   height:max-content;
+  /* width:min-content; */
   
   margin-bottom: 15px;
 }
@@ -217,6 +219,8 @@ input[type=submit], .mini-stopka p {
   border: 2px solid #65dfc9;
 
   color: #426696;
+  margin-left: 30px;
+  margin-right: 30px;
 
 
   font-family: "Poppins", sans-serif;
@@ -235,7 +239,7 @@ textarea{
   outline: none;
 }
 
-input[type=number], input[type=date]{
+input[type=number], input[type=date], input[type=text], input[type=password]{
   min-width: 270px;
   min-height: 50px;
   text-align: center;
@@ -250,6 +254,8 @@ input[type=number], input[type=date]{
   border: 2px solid #65dfc9;
 }
 
+
+
 textarea{
   color: #658ec6;
   font-weight: 500;
@@ -263,6 +269,7 @@ textarea{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* width: max-content; */
 }
 
 .mini-stopka p {
@@ -271,7 +278,6 @@ textarea{
 
   border: 2px solid #65dfc9;
 
-  
   padding: 20px 20px 20px 20px;
   font-size: 14px;
   font-weight: 800;
@@ -296,4 +302,41 @@ a:stopka-link{
 .stopka-link img{
     width: 40px;
     height: 40px;
+}
+
+/* LOGOWANIE */
+
+.marketing h1{
+  color: #658ec6;
+  font-size: 17px;
+}
+
+.logging{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.logging hr{
+  margin-top: 12px;
+}
+
+.logging h1{
+  margin-right: 10px;
+}
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+table.center h3{
+  margin: 5px;
+}
+
+input[type=text], input[type=password]{
+  text-align: left;
+  padding: 0px 15px 0px 15px;
+  margin: 5px;
 }
