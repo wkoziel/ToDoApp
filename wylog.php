@@ -17,16 +17,19 @@ if (!empty($stary_uzyt)) {
     // jeżeli użytkownik zalogowany i nie wylogowany
     // echo 'Wylogowano.<br />';
     // tworz_HTML_URL('logowanie.php', 'Logowanie');
-    header("Location: http://localhost/ToDoApp/logowanie.php");
-    die();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    header("Location: http://$host$uri/logowanie.php");
+    exit;
   } else {
    // użytkownik zalogowany i wylogowanie niemożliwe
     echo 'Wylogowanie niemożliwe.<br />';
   }
 } else {
   // jeżeli brak zalogowania, lecz w jakiś sposób uzyskany dostęp do strony
-  header("Location: http://localhost/ToDoApp/logowanie.php");
-  die();
+  $host  = $_SERVER['HTTP_HOST'];
+  $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+  header("Location: http://$host$uri/logowanie.php");
 }
 
 tworz_stopke_html();

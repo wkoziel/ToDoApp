@@ -52,8 +52,9 @@ function usun_zadanie($id) {
                      where id='".$id."'")) {
     throw new Exception('Usunięcie zadania nie powiodło się.');
   }
-  header("Location: http://localhost/ToDoApp/czlonek.php");
-  die();
+  $host  = $_SERVER['HTTP_HOST'];
+  $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+  header("Location: http://$host$uri/czlonek.php");
 }
 
 //TU JESZCZE MOŻNA DAĆ FUNKCJĘ DO POMOCY W OGARNIANIU CZASU
