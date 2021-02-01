@@ -168,18 +168,23 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
       {
         $todo .= <<<XYZ
         <div class="card">
-                 
                   <div class="card-info">
                     <h2>$zadanie->zadanie</h2>
                     <p>Termin oddania: $zadanie->termin</p>
                     <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
                     <div class="progress">
-                      
+
+                    </div>
+                    <div class="dropdown">
+                      <button class="dropbtn">Opcje</button>
+                      <div class="dropdown-content">
+                      <a href="funkcje_zadania.php?id=$zadanie->id">Usuń zadanie</a>
+                      <a href="#">Edytuj zadanie</a>
                     </div>
                   </div>
-                  <h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>
-                
-        </div>
+                  <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
+                </div>
+              </div>
         XYZ;
         
         
@@ -197,12 +202,17 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                   
                     </div>
                   </div>
-                  <h2 class="delete-task">Usuń zadanie</h2>
-                
+                  <div class="dropdown">
+                      <button class="dropbtn">Opcje</button>
+                      <div class="dropdown-content">
+                      <a href="funkcje_zadania.php?id=$zadanie->id">Usuń zadanie</a>
+                      <a href="#">Edytuj zadanie</a>
+                    </div>
+                </div>    
         </div>
         XYZ;
       }
-      else if ($zadanie->kolumna == "zrobione")
+      else if ($zadanie->kolumna == "gotowe")
       {
         $done .= <<<XYZ
         <div class="card">
@@ -212,8 +222,13 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                     <p>Termin oddania: $zadanie->termin</p>
                     <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
                     <div class="progress"></div>
+                    <div class="dropdown">
+                      <button class="dropbtn">Opcje</button>
+                      <div class="dropdown-content">
+                      <a href="funkcje_zadania.php?id=$zadanie->id">Usuń zadanie</a>
+                      <a href="#">Edytuj zadanie</a>
+                    </div>
                   </div>
-                  <h2 class="delete-task">Usuń zadanie</h2>
                 
         </div>
         XYZ;

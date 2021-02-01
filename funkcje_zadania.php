@@ -1,6 +1,12 @@
 <?php
 require_once('funkcje_bazy.php');
 
+//Jeśli do pliku zostało przesłane id to wywoła się usuń
+if (isset($_GET['id']))
+{
+  usun_zadanie($_GET['id']);
+}
+
 function pobierz_zadania_uzyt($nazwa_uz) {
   // pobranie z bazy danych wszystkich URL-i danego użytkownika
   $lacz = lacz_bd();
@@ -39,13 +45,15 @@ function dodaj_zadanie($nowe_zad, $nowy_termin, $nowy_czas) {
 
 function usun_zadanie($id) {
   // usunięcie jednego URL-a z bazy danych
+  
   $lacz = lacz_bd();
    // usunięcie zakładki
   if (!$lacz->query("delete from zadanie
                      where id='".$id."'")) {
     throw new Exception('Usunięcie zadania nie powiodło się.');
   }
-  return true;
+  header("Location: http://localhost/ToDoApp/czlonek.php");
+  die();
 }
 
 //TU JESZCZE MOŻNA DAĆ FUNKCJĘ DO POMOCY W OGARNIANIU CZASU
