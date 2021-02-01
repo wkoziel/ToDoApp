@@ -1,10 +1,25 @@
 <?php
 require_once('funkcje_bazy.php');
 
-//Jeśli do pliku zostało przesłane id to wywoła się usuń
-if (isset($_GET['id']))
+//Odbieranie zmiennych
+if (isset($_GET['usun_id']))
 {
-  usun_zadanie($_GET['id']);
+  usun_zadanie($_GET['usun_id']);
+}
+
+if (isset($_GET['do_w_trakcie']))
+{
+  przenies_do_w_trakcie($_GET['do_w_trakcie']);
+}
+
+if (isset($_GET['do_zrobienia']))
+{
+  przenies_do_do_zrobienia($_GET['do_zrobienia']);
+}
+
+if (isset($_GET['do_gotowe']))
+{
+  przenies_do_gotowe($_GET['do_gotowe']);
 }
 
 function pobierz_zadania_uzyt($nazwa_uz) {
@@ -40,7 +55,9 @@ function dodaj_zadanie($nowe_zad, $nowy_termin, $nowy_czas) {
     throw new Exception('Wstawienie nowego zadania nie powiodło się');
   }
 
-  return true;
+  $host  = $_SERVER['HTTP_HOST'];
+  $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+  header("Location: http://$host$uri/czlonek.php");
 }
 
 function usun_zadanie($id) {
@@ -51,6 +68,42 @@ function usun_zadanie($id) {
   if (!$lacz->query("delete from zadanie
                      where id='".$id."'")) {
     throw new Exception('Usunięcie zadania nie powiodło się.');
+  }
+  $host  = $_SERVER['HTTP_HOST'];
+  $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+  header("Location: http://$host$uri/czlonek.php");
+}
+
+function przenies_do_w_trakcie($id) {
+  // usunięcie jednego URL-a z bazy danych
+  
+  $lacz = lacz_bd();
+   // usunięcie zakładki
+  if (!$lacz->query("update zadanie set kolumna='w_trakcie'
+                     where id='".$id."'")) {
+    throw new Exception('Przeniesienie zadania nie powiodło się.');
+  }
+  $host  = $_SERVER['HTTP_HOST'];
+  $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+  header("Location: http://$host$uri/czlonek.php");
+}
+
+function przenies_do_do_zrobienia($id) {
+  $lacz = lacz_bd();
+  if (!$lacz->query("update zadanie set kolumna='do_zrobienia'
+                     where id='".$id."'")) {
+    throw new Exception('Przeniesienie zadania nie powiodło się.');
+  }
+  $host  = $_SERVER['HTTP_HOST'];
+  $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+  header("Location: http://$host$uri/czlonek.php");
+}
+
+function przenies_do_gotowe($id) {
+  $lacz = lacz_bd();
+  if (!$lacz->query("update zadanie set kolumna='gotowe'
+                     where id='".$id."'")) {
+    throw new Exception('Przeniesienie zadania nie powiodło się.');
   }
   $host  = $_SERVER['HTTP_HOST'];
   $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');

@@ -178,8 +178,9 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                     <div class="dropdown">
                       <button class="dropbtn">Opcje</button>
                       <div class="dropdown-content">
-                      <a href="funkcje_zadania.php?id=$zadanie->id">Usuń zadanie</a>
-                      <a href="#">Edytuj zadanie</a>
+                      <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                      <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+                      <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
                     </div>
                   </div>
                   <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
@@ -205,8 +206,9 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                   <div class="dropdown">
                       <button class="dropbtn">Opcje</button>
                       <div class="dropdown-content">
-                      <a href="funkcje_zadania.php?id=$zadanie->id">Usuń zadanie</a>
-                      <a href="#">Edytuj zadanie</a>
+                      <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                      <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                      <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
                     </div>
                 </div>    
         </div>
@@ -225,8 +227,9 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                     <div class="dropdown">
                       <button class="dropbtn">Opcje</button>
                       <div class="dropdown-content">
-                      <a href="funkcje_zadania.php?id=$zadanie->id">Usuń zadanie</a>
-                      <a href="#">Edytuj zadanie</a>
+                      <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                      <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                      <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
                     </div>
                   </div>
                 
@@ -244,7 +247,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
       //       </tr>";
       }
   } else {
-    echo "<tr><td>Brak zapisanych zadań</td></tr>";
+    //echo "<tr><td>Brak zapisanych zadań</td></tr>";
   }
 
   if($tabela_zadan == true) {
