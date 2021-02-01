@@ -172,32 +172,63 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
 
       if ($zadanie->kolumna == "do_zrobienia")
       {
-        $todo .= <<<XYZ
-        <div class="card">
-                  <div class="card-info">
-                    <h2>$zadanie->zadanie</h2>
-                    <p>Termin oddania: $zadanie->termin</p>
-                    <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                    <div class="progress">
-
+        $datetime1 = strtotime($zadanie->termin); 
+        $datetime2 = strtotime(date("Y-m-d"));
+        $roznica = ($datetime1-$datetime2) / 86400;
+        $kiedy_zaczac = $roznica - $zadanie->szacowany_czas;
+        if ($kiedy_zaczac <= 1)
+          $todo .= <<<XYZ
+          <div class="card">
+                    <div class="card-info">
+                      <h2>$zadanie->zadanie</h2>
+                      <p>Termin oddania: $zadanie->termin</p>
+                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+                      <div class="progress">
+                        <p>Pownieneś już zacząć wykonywać zadanie.</p>
+                      </div>
+                      <div class="dropdown">
+                        <button class="dropbtn">Opcje</button>
+                        <div class="dropdown-content">
+                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+                        <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
+                      </div>
                     </div>
-                    <div class="dropdown">
-                      <button class="dropbtn">Opcje</button>
-                      <div class="dropdown-content">
-                      <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                      <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
-                      <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
-                    </div>
+                    <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
                   </div>
-                  <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
                 </div>
-              </div>
-        XYZ;
+          XYZ;
+        else
+          $todo .= <<<XYZ
+          <div class="card">
+                    <div class="card-info">
+                      <h2>$zadanie->zadanie</h2>
+                      <p>Termin oddania: $zadanie->termin</p>
+                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+                      <div class="progress">
+                        <p> Czas do końca zadania: $roznica dni</p>
+                        <p> Zadanie powienieś rozpocząć za $kiedy_zaczac dni </p>
+                      </div>
+                      <div class="dropdown">
+                        <button class="dropbtn">Opcje</button>
+                        <div class="dropdown-content">
+                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+                        <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
+                      </div>
+                    </div>
+                    <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
+                  </div>
+                </div>
+          XYZ;
         
         
       }
       else if($zadanie->kolumna == "w_trakcie")
       {
+        $datetime1 = strtotime($zadanie->termin); 
+        $datetime2 = strtotime(date("Y-m-d"));
+        $roznica = ($datetime1-$datetime2) / 86400;
         $during .= <<<XYZ
         <div class="card">
                  
@@ -206,7 +237,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                     <p>Termin oddania: $zadanie->termin</p>
                     <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
                     <div class="progress">
-                  
+                      <p> Czas do planowanego ukończenia zadania: $roznica dni </p>
                     </div>
                   </div>
                   <div class="dropdown">
