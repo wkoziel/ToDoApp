@@ -184,7 +184,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                       <p>Termin oddania: $zadanie->termin</p>
                       <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
                       <div class="progress">
-                        <p>Pownieneś już zacząć wykonywać zadanie.</p>
+                        <p>Powinieneś już zacząć wykonywać zadanie</p>
                       </div>
                       <div class="dropdown">
                         <button class="dropbtn">Opcje</button>
@@ -207,7 +207,7 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                       <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
                       <div class="progress">
                         <p> Czas do końca zadania: $roznica dni</p>
-                        <p> Zadanie powienieś rozpocząć za $kiedy_zaczac dni </p>
+                        <p> Zadanie powinieneś rozpocząć za $kiedy_zaczac dni </p>
                       </div>
                       <div class="dropdown">
                         <button class="dropbtn">Opcje</button>
@@ -341,18 +341,6 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
     //echo "<tr><td>Brak zapisanych zadań</td></tr>";
   }
 
-  if($tabela_zadan == true) {
-    echo "<div class=\"link\">";
-    echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
-    echo "<a href=\"#\" onClick=\"tabela_zadan.submit();\"><h2>Usuń zadania</h2></a>";
-    echo "</div>";
-  } 
-  else {
-    echo "<div class=\"link\">";
-    echo "<img src=\"https://img.icons8.com/flat_round/64/000000/minus.png\"/>";
-    echo "<span style=\"color: #cccccc\"><h2>Usuń zadania</h2></span>";
-    echo "</div>";
-  }
 ?>
 
   
@@ -424,16 +412,32 @@ function wyswietl_menu_uzyt() {
 function wyswietl_dodaj_zadanie_form() {
 ?>
 <form name="tabela_zadan" action="dodaj_zadanie.php" method="post">
-  <label for="zadanie">Zadanie:</label><br>
-  <textarea style="resize: none" name="zadanie" rows="5" cols="30"></textarea><br>
+  <h1>Dodaj zadanie:</h1>
+  <label for="zadanie"><h3>Zadanie:</h3></label><br>
+  <textarea style="resize: none" name="zadanie" rows="6" cols="29"></textarea><br>
 
-  <label for="date">Data zakończenia:</label><br>
+  <label for="date"><h3>Data zakończenia:</h3></label><br>
   <input type="date" name="termin" min="2021-01-01"><br>
 
-  <label for="szacowny_czas">Szacowany czas(dni):</label><br>
+  <label for="szacowny_czas"><h3>Szacowany czas(dni):</h3></label><br>
   <input type="number" name="szacowny_czas" min="1"><br>
   <br>
-  <input type="submit">
+
+  <div class="mini-stopka">
+  <div class="stopka-link">
+      <img src="https://img.icons8.com/flat_round/64/000000/home--v1.png"/>  
+      <a href="czlonek.php"><h2>Strona główna</h2></a>
+      </div>
+  
+    
+      <input type="submit">
+      <div class="stopka-link">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>
+        <a href="wylog.php"><h2>Wylogowanie</h2></a>
+  </div>
+  </div>
+  
+  
 </form>
 <?php
 }

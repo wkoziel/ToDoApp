@@ -19,7 +19,7 @@ body{
 
 h1 {
   color: #426696;
-  font-weight: 600;
+  font-weight: 1000;
   margin-left: 10px;
   font-size: 20px;
 }
@@ -35,6 +35,7 @@ h3 {
   color: #426696;
   font-weight: 600;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 main {
@@ -59,7 +60,6 @@ main {
   display: flex;
   flex-direction: column;
 
-
   text-align: center;
   padding: 20px 10px;
   background: linear-gradient(
@@ -68,7 +68,9 @@ main {
     rgba(255, 255, 255, 0.3)
   );
   border-radius: 2rem;
-  height: 570px;
+  /* height: 570px; */
+  height:max-content;
+  
   margin-bottom: 15px;
 }
 
@@ -94,7 +96,6 @@ a:link{
 
 .tasks {
   flex: 2;
-  /* text-align: center; */
 }
 
 .autorzy {
@@ -205,4 +206,90 @@ a:link{
 
 .dropdown:hover .dropdown-content {
 display: block;
+}
+
+/* DODAJ ZADANIE FORMULARZ */
+
+input[type=submit], .mini-stopka p {
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+  border-radius: 2rem;
+
+  border: 2px solid #65dfc9;
+
+  color:#426696;
+  padding: 20px 40px 20px 40px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+input[type=date]{
+  padding-right: 20px;
+}
+
+input[type=date]:focus, input[type=number]:focus, 
+textarea{
+  outline: none;
+}
+
+input[type=number], input[type=date]{
+  min-width: 270px;
+  min-height: 50px;
+  text-align: center;
+  outline:none;
+  
+  color:#426696;
+  font-weight: 500;
+  font-size: 16px;
+
+  border-radius: 2rem;
+
+  border: 2px solid #65dfc9;
+}
+
+textarea{
+  color:#426696;
+  font-weight: 500;
+  padding: 16px;
+  border-radius: 2rem;
+
+  border: 2px solid #65dfc9;
+}
+
+.mini-stopka{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mini-stopka p {
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+  border-radius: 2rem;
+
+  border: 2px solid #65dfc9;
+
+  color:#426696;
+  padding: 20px 20px 20px 20px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+a:stopka-link{
+  text-decoration: none;
+}
+
+.stopka-link {
+  display: flex;
+  padding: 10px 10px;
+  align-items: center;
+}
+.stopka-link h2 {
+  padding: 0rem 10px;
+  color:#426696;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.stopka-link img{
+    width: 40px;
+    height: 40px;
 }
