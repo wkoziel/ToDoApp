@@ -12,18 +12,43 @@ function rejestruj($nazwa_uz, $email, $haslo) {
   // sprawdzenie, czy nazwa użytkownika nie powtarza się
   $wynik = $lacz->query("select * from uzytkownik where nazwa_uz='".$nazwa_uz."'");
   if (!$wynik) {
-     throw new Exception('Wykonanie zapytania nie powiodło się.');
+     throw new Exception('<h1>Wykonanie zapytania nie powiodło się.</h1><br>
+     <div class="mini-stopka">
+     <div class="stopka-link">
+     <a href="logowanie.php"><h2>Logowanie</h2></a>
+     </div>
+     <div class="stopka-link">
+     <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+     </div>
+     </div>');
   }
 
   if ($wynik->num_rows>0) {
-     throw new Exception('Nazwa użytkownika zajęta — proszę wrócić i wybrać inną.');
+
+     throw new Exception('<h1>Nazwa użytkownika zajęta — proszę wrócić i wybrać inną.</h1><br>
+     <div class="mini-stopka">
+     <div class="stopka-link">
+     <a href="logowanie.php"><h2>Logowanie</h2></a>
+     </div>
+     <div class="stopka-link">
+     <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+     </div>
+     </div>');
   }
 
   // jeżeli wszystko w porządku, umieszczenie w bazie danych
   $wynik = $lacz->query("insert into uzytkownik values
                        ('".$nazwa_uz."', sha1('".$haslo."'), '".$email."')");
   if (!$wynik) {
-    throw new Exception('Rejestracja w bazie danych niemożliwa — proszę spróbować później.');
+    throw new Exception('<h1>Rejestracja w bazie danych niemożliwa — proszę spróbować później.</h1><br>
+     <div class="mini-stopka">
+     <div class="stopka-link">
+     <a href="logowanie.php"><h2>Logowanie</h2></a>
+     </div>
+     <div class="stopka-link">
+     <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+     </div>
+     </div>');
   }
 
   return true;
@@ -42,39 +67,58 @@ function loguj($nazwa_uz, $haslo) {
                          where nazwa_uz='".$nazwa_uz."'
                          and haslo = sha1('".$haslo."')");
   if (!$wynik) {
-     throw new Exception('Logowanie nie powiodło się.');
+     throw new Exception('<h1>Logowanie nie powiodło się.</h1><br>
+     <div class="mini-stopka">
+      <div class="stopka-link">
+      <img src="https://img.icons8.com/flat_round/64/000000/home--v1.png"/>  
+      <a href="czlonek.php"><h2>Strona główna</h2></a>
+      </div>
+      <div class="stopka-link">
+      <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>  
+      <a href="wylog.php"><h2>Wylogowanie</h2></a>
+      </div>
+      </div>');
   }
 
   if ($wynik->num_rows>0) {
      return true;
   } else {
-     throw new Exception('Logowanie nie powiodło się.');
+    throw new Exception('<h1>Logowanie nie powiodło się.</h1><br>
+    <div class="mini-stopka">
+      <div class="stopka-link">
+      <img src="https://img.icons8.com/flat_round/64/000000/home--v1.png"/>  
+      <a href="czlonek.php"><h2>Strona główna</h2></a>
+      </div>
+      <div class="stopka-link">
+      <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>  
+      <a href="wylog.php"><h2>Wylogowanie</h2></a>
+      </div>
+      </div>');
   }
 }
 
 function sprawdz_prawid_uzyt() {
 // sprawdzenie czy użytkownik jest zalogowany i powiadomienie go jeżeli nie
   if (isset($_SESSION['prawid_uzyt'])) {
-      // echo "<div class=\"dashboard\">";
       echo "<div class=\"user\">";
       echo "<h3>Zalogowano jako: </h3>";
       echo "<p>".$_SESSION['prawid_uzyt']."</p>";
       echo "</div>";
       echo "<div class=\"links\">";
 
-      // echo "<div class=\"link\">";
-      // echo "<img src=\"https://img.icons8.com/flat_round/64/000000/home--v1.png\"/>";  
-      // echo "<a href=\"czlonek.php\"><h2>Strona główna</h2></a>";
-      // echo "</div>";
-      // echo "<div class=\"link\">";
-      // echo "<img src=\"https://img.icons8.com/flat_round/64/000000/plus.png\"/>";
-      // echo "<a href=\"dodaj_zadanie_formularz.php\"><h2>Dodaj zadanie</h2></a>";
-      // echo "</div>";
   } else {
      // nie jest zalogowany
-     tworz_naglowek_html('Problem:');
-     echo 'Brak zalogowania.<br />';
-     tworz_HTML_URL('logowanie.php', 'Logowanie');
+     
+     echo '<h1>Brak zalogowania.</h1><br />';
+     echo "<div class=\"mini-stopka\">";
+      echo "<div class=\"stopka-link\">";
+      echo "<a href=\"logowanie.php\"><h2>Logowanie</h2></a>";  
+      echo "</div>";
+      echo "<div class=\"stopka-link\">";
+      echo "<a href=\"formularz_rejestracji.php\"><h2>Rejestracja</h2></a>";  
+      echo "</div>";
+      echo "</div>";
+
      tworz_stopke_html();
      exit;
   }
@@ -92,7 +136,15 @@ function zmien_haslo($nazwa_uz, $stare_haslo, $nowe_haslo) {
                          set haslo = sha1('".$nowe_haslo."')
                          where nazwa_uz = '".$nazwa_uz."'");
   if (!$wynik) {
-    throw new Exception('Zmiana hasła nie powiodła się.');
+    throw new Exception('<h1>Zmiana hasła nie powiodła się.</h1><br>
+     <div class="mini-stopka">
+     <div class="stopka-link">
+     <a href="logowanie.php"><h2>Logowanie</h2></a>
+     </div>
+     <div class="stopka-link">
+     <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+     </div>
+     </div>');
   } else {
     return true;  // zmiana udana
   }
@@ -135,7 +187,15 @@ function ustaw_haslo($nazwa_uz) {
   $nowe_haslo = pobierz_losowe_slowo(6, 13);
 
   if($nowe_haslo == false) {
-    throw new Exception('Wygenerowanie nowego hasła nie powiodło się.');
+    throw new Exception('<h1>Wygenerowanie nowego hasła nie powiodło się.</h1><br>
+     <div class="mini-stopka">
+     <div class="stopka-link">
+     <a href="logowanie.php"><h2>Logowanie</h2></a>
+     </div>
+     <div class="stopka-link">
+     <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+     </div>
+     </div>');
   }
 
   // dodanie liczby pomiędzy 0 i 999 w celu stworzenia lepszego hasła
@@ -149,7 +209,16 @@ function ustaw_haslo($nazwa_uz) {
                          set haslo = sha1('".$nowe_haslo."')
                          where nazwa_uz = '".$nazwa_uz."'");
   if (!$wynik) {
-    throw new Exception('Zmiana hasła nie powiodła się.');  // hasło nie zmienione
+    throw new Exception('<h1>Zmiana hasła nie powiodła się.</h1><br>
+     <div class="mini-stopka">
+     <div class="stopka-link">
+     <a href="logowanie.php"><h2>Logowanie</h2></a>
+     </div>
+     <div class="stopka-link">
+     <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+     </div>
+     </div>');
+     // hasło nie zmienione
   } else {
     return $nowe_haslo;  // hasło zmienione pomyślnie
   }
@@ -162,10 +231,27 @@ function powiadom_haslo($nazwa_uz, $haslo) {
     $wynik = $lacz->query("select email from uzytkownik
                            where nazwa_uz='".$nazwa_uz."'");
     if (!$wynik) {
-      throw new Exception('Nie znaleziono adresu e-mail');
+      throw new Exception('<h1>Nie znaleziono adresu e-mail.</h1><br>
+     <div class="mini-stopka">
+     <div class="stopka-link">
+     <a href="logowanie.php"><h2>Logowanie</h2></a>
+     </div>
+     <div class="stopka-link">
+     <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+     </div>
+     </div>');
     } 
     else if ($wynik->num_rows == 0) {
-      throw new Exception('Nie znaleziono adresu e-mail'); // nazwy użytkownika nie ma w bazie danych
+      // nazwy użytkownika nie ma w bazie danych
+      throw new Exception('<h1>Nie znaleziono adresu e-mail.</h1><br>
+     <div class="mini-stopka">
+     <div class="stopka-link">
+     <a href="logowanie.php"><h2>Logowanie</h2></a>
+     </div>
+     <div class="stopka-link">
+     <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+     </div>
+     </div>');
     } 
     else {
       $wiersz = $wynik->fetch_object();
@@ -179,7 +265,15 @@ function powiadom_haslo($nazwa_uz, $haslo) {
         return true;
       } 
       else {
-        throw new Exception('Wysłanie e-maila nie powiodło się');
+        throw new Exception('<h1>Wysłanie e-maila nie powiodło się.</h1><br>
+     <div class="mini-stopka">
+     <div class="stopka-link">
+     <a href="logowanie.php"><h2>Logowanie</h2></a>
+     </div>
+     <div class="stopka-link">
+     <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+     </div>
+     </div>');
       }
     }
 }

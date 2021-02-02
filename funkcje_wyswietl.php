@@ -485,7 +485,6 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
           </div>
         </div>
 
-  <form name="tabela_zadan" action="usun_zadanie.php" method="post">
 
   <div class="tasks">
           <div class="statuses">
@@ -517,7 +516,6 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
             
           </div> <!--statuses-->
   </div> <!--tasks-->
-  </form>
   
 <?php
 }
@@ -574,19 +572,6 @@ function wyswietl_haslo_form() {
 ?>
    <br />
    <form action="zmiana_hasla.php" method="post">
-   <table width="250" cellpadding="2" cellspacing="0">
-   <tr><td>Poprzednie hasło:</td>
-       <td><input type="password" name="stare_haslo" size="16" maxlength="16" required/></td>
-   </tr>
-   <tr><td>Nowe hasło:</td>
-       <td><input type="password" name="nowe_haslo" size="16" maxlength="16" required/></td>
-   </tr>
-   <tr><td>Powtórzenie nowego hasła:</td>
-       <td><input type="password" name="nowe_haslo2" size="16" maxlength="16" required/></td>
-   </tr>
-   <tr><td colspan="2" ><input type="submit" value="Zmiana hasła"/>
-   </td></tr>
-   </table>
 
    <table class="center">
         <tr>
@@ -604,11 +589,25 @@ function wyswietl_haslo_form() {
         <td valign="top"><input type="password" name="nowe_haslo2" size="16" maxlength="16" required/></td></tr>
         </tr>
 
-        <tr>
-          <td><input type="submit" value="Zmień hasło"/></td>
-        </tr>
+        <!-- <tr>
+          <td><div class="mini-stopka"><input type="submit" value="Zmień hasło"/></div></td>
+        </tr> -->
       </table>
-   <br />
+   <br /> <br>
+
+   <div class="mini-stopka">
+  <div class="stopka-link">
+      <img src="https://img.icons8.com/flat_round/64/000000/home--v1.png"/>  
+      <a href="czlonek.php"><h2>Strona główna</h2></a>
+      </div>
+  
+    
+      <input type="submit" value="Zmień hasło"/>
+      <div class="stopka-link">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>
+        <a href="wylog.php"><h2>Wylogowanie</h2></a>
+  </div>
+  </div>
 
    
 <?php
