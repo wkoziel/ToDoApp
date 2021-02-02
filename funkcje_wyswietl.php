@@ -587,23 +587,63 @@ function wyswietl_haslo_form() {
    <tr><td colspan="2" ><input type="submit" value="Zmiana hasła"/>
    </td></tr>
    </table>
+
+   <table class="center">
+        <tr>
+        <td><h3>Poprzednie hasło: </h3></td>
+        <td valign="top"><input type="password" name="stare_haslo" size="16" maxlength="16" required/></td></tr>
+        </tr>
+
+        <tr>
+        <td><h3>Nowe hasło: </h3></td>
+        <td valign="top"><input type="password" name="nowe_haslo" size="16" maxlength="16" required/></td></tr>
+        </tr>
+
+        <tr>
+        <td><h3>Powtórzenie nowego hasła: </h3></td>
+        <td valign="top"><input type="password" name="nowe_haslo2" size="16" maxlength="16" required/></td></tr>
+        </tr>
+
+        <tr>
+          <td><input type="submit" value="Zmień hasło"/></td>
+        </tr>
+      </table>
    <br />
+
+   
 <?php
 };
 
 function wyswietl_zapomnij_form() {
   // wyświetlenie formularza HTML do ustawiania nowych haseł
 ?>
-   <br />
+
    <form action="zapomnij_haslo.php" method="post">
-   <table width="250" cellpadding="2" cellspacing="0">
-   <tr><td>Nazwa użytkownika</td>
-       <td><input type="text" name="nazwa_uz" size="16" maxlength="16"/></td>
-   </tr>
-   <tr><td colspan="2"><input type="submit" value="Zmiana hasła"/>
-   </td></tr>
-   </table>
+
+   <h1>ZMIANA HASŁA</h1> <BR>
+
+   <table class="center">
+        <tr>
+        <td><h3>Nazwa użytkownika: </h3></td>
+        <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16" required/></td></tr>
+        </tr>
+
+      </table>
    <br />
+
+
+   <div class="mini-stopka">
+      
+   <div class="stopka-link">
+      <a href="logowanie.php"><h2>Logowanie</h2></a>
+      </div>
+
+      <input type="submit" value="Zmień hasło"/>
+      <div class="stopka-link">
+      <a href="formularz_rejestracji.php"><h2>Rejestracja</h2></a>
+      </div>
+
+     </div>
 <?php
 }
 ?>

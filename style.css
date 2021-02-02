@@ -55,6 +55,13 @@ main {
   display: flex;
 }
 
+/* .newglass{
+  min-height: 80vh;
+  width: 60%;
+  justify-content: center;
+  text-align: center;
+} */
+
 .dashboard {
   flex: 1;
   display: flex;
@@ -75,6 +82,8 @@ main {
   
   margin-bottom: 15px;
 }
+
+
 
 a:link{
   text-decoration: none;
