@@ -1,98 +1,77 @@
 <?php
 
-//TUTAJ WSZĘDZIE USTAWIĆ NOWE STYLE
+//W TYM PLIKU ZNAJDUJĄ SIĘ FUNKCJE ODPOWIEDZIALNE ZA HTML I WYŚWIETLANIE
 
+// Tworzenie nagłówka strony z html - początek szablonu
 function tworz_naglowek_html($tytul) {
-  // wyświetlenie nagłówka HTML
-?>
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <title><?php echo $tytul;?></title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-  <body>
-  <header>
-  <!-- <h1>INTELIGENTNY PLANER</h1> -->
-<?php
-  if($tytul) {
-    tworz_tytul_html($tytul);
-    // echo $tytul;
-  }
-}
-
-function tworz_stopke_html() {
-  // wyświetlenie stopki HTML
-?>
-  </section>
-  </main>
-  <!-- <footer><p>Projekt wykonany przez studentów grupy PI-A: Tatianę Cieślar, Piotra Hadama i Wojciecha Kozieła</p></footer> -->
-  </body>
-  </html>
-<?php
-}
-
-function tworz_tytul_html($tytul) {
-  // wyświetlenie tytułu
-?>
-  <!-- <h2><?php echo $tytul;?></h2> -->
-  </header>
-  <main>
-  <section class="glass">
-  <div class="dashboard">
-  <?php
-  
   ?>
-<?php
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title><?php echo $tytul;?></title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+      </head>
+    <body>
+    <header>
+  <?php
+    if($tytul) {
+      tworz_tytul_html($tytul);
+    }
 }
 
-
-
-function tworz_HTML_URL($url, $nazwa) {
-  // wyświetlenie URL-a jako łącza i nowa linia
-?>
-  <br /><a href="<?php echo $url;?>"><?php echo $nazwa;?></a><br />
-<?php
+// Tworzenie stopki dla strony z html - koniec szablonu
+function tworz_stopke_html() {
+  ?>
+    </section>
+    </main>
+    </body>
+    </html>
+  <?php
 }
 
-function wyswietl_informacje_witryny() {
-  // wyświetlenie informacji marketingowych
-?>
-  <!-- <h1>Dodawaj nowe zadania</h1>
-  <h1>Zobacz swoje najważniejsze obecnie zadania</h1>
-  <h1>Rejestruj czas i sprawdź, jak efektywna jest Twoja praca</h1> -->
-
-  </header>
-  <main>
-
-  <section class="glass">
-
+// Tworzenie części tutułowej html
+function tworz_tytul_html($tytul) {
+  ?></h2>
+    </header>
+    <main>
+    <section class="glass">
     <div class="dashboard">
-
-<?php
+  <?php
 }
 
+// Tworzenie skrótu do innej części programu
+function tworz_HTML_URL($url, $nazwa) {
+  ?>
+    <br /><a href="<?php echo $url;?>"><?php echo $nazwa;?></a><br />
+  <?php
+}
+
+// Wyświetlanie informacji witryny
+function wyswietl_informacje_witryny() {
+  ?>
+    </header>
+    <main>
+    <section class="glass">
+      <div class="dashboard">
+  <?php
+}
+
+// Wyświetlanie strony logowania
 function wyswietl_form_log() {
-?>
+  ?>
   <div class="marketing">
     <h1>Dodawaj nowe zadania,</h1>
     <h1>Zobacz swoje najważniejsze obecnie zadania,</h1>
     <h1>Rejestruj czas i sprawdź, jak efektywna jest Twoja praca!</h1>
   </div>
   
-  <br>
-  <!-- <hr size="6" color="#426696"> -->
-  <br>
+  <br><br>
+
   <form method="post" action="czlonek.php">
       <div class="logging">
-        <!-- <hr size="6" width="30%" color="#426696"> -->
         <h1>LOGOWANIE</h1>
-        <!-- <hr size="6" width="30%" color="#426696"> -->
       </div>
-      
       <br>
-       
-
       <table class="center">
         <tr>
         <td><h3>Nazwa użytkownika: </h3></td>
@@ -121,77 +100,72 @@ function wyswietl_form_log() {
       </div>
      </div>
    </form>
-</div> <!--koniec div dashboard-->
+  </div> <!--koniec div dashboard-->
 
-<?php
+  <?php
 }
 
+// Wyświetlanie strony rejestracji
 function wyswietl_form_rej() {
-?>
-  <h1>REJESTRACJA</h1>
-  <br>
- <form method="post" action="nowa_rejestracja.php">
- <table class="center">
-   <tr>
-     <td><h3>Adres poczty elektronicznej:</h3></td>
-     <td><input type="text" name="email" size="35" maxlength="100" required></td></tr>
-   <tr>
-     <td><h3>Nazwa użytkownika:</h3></td>
-     <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16" required/></td></tr>
-   <tr>
-     <td><h3>Hasło:</h3></td>
-     <td valign="top"><input type="password" name="haslo" size="16" maxlength="16" required/></td></tr>
-   <tr>
-     <td><h3>Potwierdź hasło:</h3></td>
-     <td><input type="password" name="haslo2" size="16" maxlength="16" required/></td></tr>
+  ?>
+    <h1>REJESTRACJA</h1>
+    <br>
+  <form method="post" action="nowa_rejestracja.php">
+  <table class="center">
+    <tr>
+      <td><h3>Adres poczty elektronicznej:</h3></td>
+      <td><input type="text" name="email" size="35" maxlength="100" required></td></tr>
+    <tr>
+      <td><h3>Nazwa użytkownika:</h3></td>
+      <td valign="top"><input type="text" name="nazwa_uz" size="16" maxlength="16" required/></td></tr>
+    <tr>
+      <td><h3>Hasło:</h3></td>
+      <td valign="top"><input type="password" name="haslo" size="16" maxlength="16" required/></td></tr>
+    <tr>
+      <td><h3>Potwierdź hasło:</h3></td>
+      <td><input type="password" name="haslo2" size="16" maxlength="16" required/></td></tr>
 
-      
- </table>
- <br> <br>
+        
+  </table>
+  <br> <br>
 
- <div class="mini-stopka">
-      <div class="stopka-link">
-      <a href="zapomnij_formularz.php"><h2>Zapomniane hasło?</h2></a>
+  <div class="mini-stopka">
+        <div class="stopka-link">
+        <a href="zapomnij_formularz.php"><h2>Zapomniane hasło?</h2></a>
+        </div>
+
+        <input type="submit" value="Zarejestruj się">
+
+        <div class="stopka-link">
+        <a href="logowanie.php"><h2>Masz już konto?<br>Zaloguj się</h2></a>
+        </div>
+
       </div>
 
-      <input type="submit" value="Zarejestruj się">
-
-      <div class="stopka-link">
-      <a href="logowanie.php"><h2>Masz już konto?<br>Zaloguj się</h2></a>
-      </div>
-
-     </div>
-
-</form>
-<?php
+  </form>
+  <?php
 
 }
 
+// Funkcja pomocnicza dla sortowania względem daty
 function date_compare($element1, $element2) { 
   $datetime1 = strtotime($element1->termin); 
   $datetime2 = strtotime($element2->termin); 
   return $datetime1 - $datetime2; 
 }  
 
-//do zmiany na wyswietl zadania
+// Funkcja odpowiedzialna za generowanie kart z zadaniami
 function wyswietl_zadania_uzyt($tablica_zadan) {
-  //wyswietlenie URL-i użytkownika
-
+  
   // ustawienie zmiennej globalnej, aby możliwe było sprawdzanie strony
   global $tabela_zadan;
   global $todo;
   global $done;
   global $during;
-
-
   $tabela_zadan = true;
-?>
-
-  
-  <!-- <table width="300" cellpadding="2" cellspacing="0"> -->
-  <?php
   $kolor = "#cccccc";
 
+  //Generowanie menu bocznego wraz z ikonami
   echo "<div class=\"link\">";
   echo "<img src=\"https://img.icons8.com/flat_round/64/000000/home--v1.png\"/>";  
   echo "<a href=\"czlonek.php\"><h2>Strona główna</h2></a>";
@@ -200,16 +174,18 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
   echo "<img src=\"https://img.icons8.com/flat_round/64/000000/plus.png\"/>";
   echo "<a href=\"dodaj_zadanie_formularz.php\"><h2>Dodaj zadanie</h2></a>";
   echo "</div>";
-  
-  // echo "<tr bgcolor=\"".$kolor."\"><td><strong>Zadanie</strong></td>";
-  // echo "<td><strong>Termin</strong></td>";
-  // echo "<td><strong>Szacowany czas</strong></td>";
-  // echo "<td><strong>Status</strong></td>";
-  // echo "<td><strong>Usuń?</strong></td></tr>";
+
+  //Wczytywanie tabeli z zadaniami
   if ((is_array($tablica_zadan)) && (count($tablica_zadan) > 0)) 
   {
+
+    //Sortowanie zadań po dacie
     usort($tablica_zadan, 'date_compare'); 
+    
+    //Analiza każdego zadania z osobna
     foreach ($tablica_zadan as $zadanie) {
+      
+      //
       if ($kolor == "#cccccc") {
         $kolor = "#ffffff";
       } else {
@@ -241,7 +217,6 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                         <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
                       </div>
                     </div>
-                    <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
                   </div>
                 </div>
           XYZ;
