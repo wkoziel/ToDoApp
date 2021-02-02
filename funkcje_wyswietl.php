@@ -178,278 +178,277 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
   //Wczytywanie tabeli z zadaniami
   if ((is_array($tablica_zadan)) && (count($tablica_zadan) > 0)) 
   {
-
     //Sortowanie zadań po dacie
     usort($tablica_zadan, 'date_compare'); 
     
     //Analiza każdego zadania z osobna
     foreach ($tablica_zadan as $zadanie) {
-      
-      //
-      if ($kolor == "#cccccc") {
-        $kolor = "#ffffff";
-      } else {
-        $kolor = "#cccccc";
-      }
 
+      //Analiza zadań z etykietą "do zrobienia"
       if ($zadanie->kolumna == "do_zrobienia")
       {
+        //Zmienne do określenia czasu
         $datetime1 = strtotime($zadanie->termin); 
         $datetime2 = strtotime(date("Y-m-d"));
         $roznica = ($datetime1-$datetime2) / 86400;
         $kiedy_zaczac = $roznica - $zadanie->szacowany_czas;
+
+        //Zapas czasu równy 0
         if ($kiedy_zaczac == 0)
           $todo .= <<<XYZ
           <div class="card">
-                    <div class="card-info">
-                      <h2>$zadanie->zadanie</h2>
-                      <p>Termin oddania: $zadanie->termin</p>
-                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                      <div class="progress">
-                        <p> Czas do końca zadania: $roznica dni.</p>
-                        <p style="color: orange">Zadanie powinno zostać dzisiaj rozpoczęte.</p>
-                      </div>
-                      <div class="dropdown">
-                        <button class="dropbtn">Opcje</button>
-                        <div class="dropdown-content">
-                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
-                        <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
-                      </div>
-                    </div>
+             <div class="card-info">
+                 <h2>$zadanie->zadanie</h2>
+                 <p>Termin oddania: $zadanie->termin</p>
+                 <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+                 <div class="progress">
+                   <p> Czas do końca zadania: $roznica dni.</p>
+                   <p style="color: orange">Zadanie powinno zostać dzisiaj rozpoczęte.</p>
                   </div>
+                <div class="dropdown">
+                  <button class="dropbtn">Opcje</button>
+                  <div class="dropdown-content">
+                    <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                    <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+                    <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
                 </div>
+              </div>
+            </div>
+          </div>
           XYZ;
+        
+        //Zapas czasu większy od 0
         else if ($kiedy_zaczac > 0)
           $todo .= <<<XYZ
           <div class="card">
-                    <div class="card-info">
-                      <h2>$zadanie->zadanie</h2>
-                      <p>Termin oddania: $zadanie->termin</p>
-                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                      <div class="progress">
-                        <p> Czas do końca zadania: $roznica dni.</p>
-                        <p style="color: green"> Zadanie powinno zostać rozpoczęte za $kiedy_zaczac dni. </p>
-                      </div>
-                      <div class="dropdown">
-                        <button class="dropbtn">Opcje</button>
-                        <div class="dropdown-content">
-                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
-                        <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
-                      </div>
-                    </div>
-                    <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
-                  </div>
-                </div>
-          XYZ;
+            <div class="card-info">
+              <h2>$zadanie->zadanie</h2>
+              <p>Termin oddania: $zadanie->termin</p>
+              <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+              <div class="progress">
+                <p> Czas do końca zadania: $roznica dni.</p>
+                <p style="color: green"> Zadanie powinno zostać rozpoczęte za $kiedy_zaczac dni. </p>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn">Opcje</button>
+                <div class="dropdown-content">
+                <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+                <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
+              </div>
+            </div>
+            <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
+          </div>
+        </div>
+      XYZ;
+
+        // Brak zapasowego czasu
         else{
           $kiedy_zaczac = $kiedy_zaczac * -1;
           $todo .= <<<XYZ
           <div class="card">
-                    <div class="card-info">
-                      <h2>$zadanie->zadanie</h2>
-                      <p>Termin oddania: $zadanie->termin</p>
-                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                      <div class="progress">
-                        <p> Czas do końca zadania: $roznica dni.</p>
-                        <p style="color: red"> Zadanie powinno zostać rozpoczęte $kiedy_zaczac dni temu. </p>
-                      </div>
-                      <div class="dropdown">
-                        <button class="dropbtn">Opcje</button>
-                        <div class="dropdown-content">
-                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
-                        <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
-                      </div>
-                    </div>
-                    <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
-                  </div>
-                </div>
-          XYZ;
+            <div class="card-info">
+              <h2>$zadanie->zadanie</h2>
+              <p>Termin oddania: $zadanie->termin</p>
+              <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+              <div class="progress">
+                <p> Czas do końca zadania: $roznica dni.</p>
+                <p style="color: red"> Zadanie powinno zostać rozpoczęte $kiedy_zaczac dni temu. </p>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn">Opcje</button>
+                <div class="dropdown-content">
+                <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+                <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
+              </div>
+            </div>
+            <!--<h2 class="delete-task">Usuń zadanie: <input type="checkbox" name="usun_mnie[]" value="$zadanie->id"/></h2>-->
+          </div>
+        </div>
+      XYZ;
         }
-
-        
-        
       }
+
+      // Analiza zadać z etykietą w trakcie
       else if($zadanie->kolumna == "w_trakcie")
       {
+        //Zmienne do określenia czasu
         $datetime1 = strtotime($zadanie->termin); 
         $datetime2 = strtotime(date("Y-m-d"));
         $roznica = ($datetime1-$datetime2) / 86400;
+        
+        // Zapasowy czas większy o 0
         if ($roznica > 0){
           $during .= <<<XYZ
-          <div class="card">
-                   
-                    <div class="card-info">
-                      <h2>$zadanie->zadanie</h2>
-                      <p>Termin oddania: $zadanie->termin</p>
-                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                      <div class="progress">
-                        <p style="color: green"> Zadanie powinno zostać zakończone za $roznica dni. </p>
-                      </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Opcje</button>
-                        <div class="dropdown-content">
-                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                        <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
-                        <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
-                      </div>
-                  </div>    
+          <div class="card">  
+            <div class="card-info">
+              <h2>$zadanie->zadanie</h2>
+              <p>Termin oddania: $zadanie->termin</p>
+              <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+              <div class="progress">
+                <p style="color: green"> Zadanie powinno zostać zakończone za $roznica dni. </p>
+              </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Opcje</button>
+                <div class="dropdown-content">
+                <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
+              </div>
+          </div>    
           </div>
           XYZ;
         }
+
+        // Zapasowy czas równy 0
         else if ($roznica == 0){
           $during .= <<<XYZ
           <div class="card">
-                   
-                    <div class="card-info">
-                      <h2>$zadanie->zadanie</h2>
-                      <p>Termin oddania: $zadanie->termin</p>
-                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                      <div class="progress">
-                        <p style="color: orange"> Zadanie powinno zostać dzisiaj zakończone. </p>
-                      </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Opcje</button>
-                        <div class="dropdown-content">
-                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                        <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
-                        <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
-                      </div>
-                  </div>    
+            <div class="card-info">
+              <h2>$zadanie->zadanie</h2>
+              <p>Termin oddania: $zadanie->termin</p>
+              <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+              <div class="progress">
+                <p style="color: orange"> Zadanie powinno zostać dzisiaj zakończone. </p>
+              </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Opcje</button>
+                <div class="dropdown-content">
+                <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
+              </div>
+          </div>    
           </div>
           XYZ;
         }
+
+        // Brak zapasowego czasu
         else {
           $roznica = $roznica * -1;
           $during .= <<<XYZ
           <div class="card">
-                   
-                    <div class="card-info">
-                      <h2>$zadanie->zadanie</h2>
-                      <p>Termin oddania: $zadanie->termin</p>
-                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                      <div class="progress">
-                        <p style="color: red"> Zadanie powinno zostać zakończone $roznica dni temu. </p>
-                      </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Opcje</button>
-                        <div class="dropdown-content">
-                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                        <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
-                        <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
-                      </div>
-                  </div>    
+            <div class="card-info">
+              <h2>$zadanie->zadanie</h2>
+              <p>Termin oddania: $zadanie->termin</p>
+              <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+              <div class="progress">
+                <p style="color: red"> Zadanie powinno zostać zakończone $roznica dni temu. </p>
+              </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Opcje</button>
+                <div class="dropdown-content">
+                <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                <a href="funkcje_zadania.php?do_gotowe=$zadanie->id">Gotowe</a>
+              </div>
+          </div>    
           </div>
           XYZ;
         }
-
       }
+
+      // Analiza zadań z etykietą gotowe
       else if ($zadanie->kolumna == "gotowe")
       {  
+        //Zmienne do określania czasu
         $datetime1 = strtotime($zadanie->termin); 
         $datetime2 = strtotime($zadanie->ukonczono);
         $roznica = ($datetime1-$datetime2) / 86400;
         
+        //Zadanie ukończone przed terminem
         if ($roznica > 0)
           $done .= <<<XYZ
-          <div class="card">
-                  
-                    <div class="card-info">
-                      <h2>$zadanie->zadanie</h2>
-                      <p>Termin oddania: $zadanie->termin</p>
-                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                      <div class="progress">
-                        <p style="color: green"> Ukończono $roznica dni przed terminem. </p>
-                      </div>
-                      <div class="dropdown">
-                        <button class="dropbtn">Opcje</button>
-                        <div class="dropdown-content">
-                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                        <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
-                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
-                      </div>
-                    </div>
-                  </div>
+          <div class="card">       
+            <div class="card-info">
+              <h2>$zadanie->zadanie</h2>
+              <p>Termin oddania: $zadanie->termin</p>
+              <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+              <div class="progress">
+                <p style="color: green"> Ukończono $roznica dni przed terminem. </p>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn">Opcje</button>
+                <div class="dropdown-content">
+                <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+              </div>
+            </div>
+          </div>
           </div>
           XYZ;
+
+        //Zadanie ukończone po terminie
         else if ($roznica < 0)
         {
           $roznica = $roznica * -1;
           $done .= <<<XYZ
-          <div class="card">
-                  
-                    <div class="card-info">
-                      <h2>$zadanie->zadanie</h2>
-                      <p>Termin oddania: $zadanie->termin</p>
-                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                      <div class="progress">
-                        <p style="color: red"> Ukończono $roznica dni po terminie. </p>
-                      </div>
-                      <div class="dropdown">
-                        <button class="dropbtn">Opcje</button>
-                        <div class="dropdown-content">
-                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                        <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
-                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
-                      </div>
-                    </div>
-                  </div>
+          <div class="card">        
+            <div class="card-info">
+              <h2>$zadanie->zadanie</h2>
+              <p>Termin oddania: $zadanie->termin</p>
+              <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+              <div class="progress">
+                <p style="color: red"> Ukończono $roznica dni po terminie. </p>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn">Opcje</button>
+                <div class="dropdown-content">
+                <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+              </div>
+            </div>
+          </div>
           </div>
           XYZ;
         }
+
+        // Zadanie ukończone równo z terminem
         else
           $done .= <<<XYZ
-          <div class="card">
-                  
-                    <div class="card-info">
-                      <h2>$zadanie->zadanie</h2>
-                      <p>Termin oddania: $zadanie->termin</p>
-                      <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
-                      <div class="progress">
-                        <p style="color: orange"> Ukończono w terminie. </p>
-                      </div>
-                      <div class="dropdown">
-                        <button class="dropbtn">Opcje</button>
-                        <div class="dropdown-content">
-                        <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
-                        <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
-                        <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
-                      </div>
-                    </div>
-                  </div>
+          <div class="card">                 
+            <div class="card-info">
+              <h2>$zadanie->zadanie</h2>
+              <p>Termin oddania: $zadanie->termin</p>
+              <p>Szacowany czas: $zadanie->szacowany_czas dni</p>
+              <div class="progress">
+                <p style="color: orange"> Ukończono w terminie. </p>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn">Opcje</button>
+                <div class="dropdown-content">
+                <a href="funkcje_zadania.php?usun_id=$zadanie->id">Usuń zadanie</a>
+                <a href="funkcje_zadania.php?do_zrobienia=$zadanie->id">Do zrobienia</a>
+                <a href="funkcje_zadania.php?do_w_trakcie=$zadanie->id">W trakcie</a>
+              </div>
+            </div>
+          </div>
           </div>
           XYZ;
-
       }
-      // należy pamiętać o wywołaniu htmlspecialchars() przy wyświetlaniu danych użytkownika
-      
-      }
-  } else {
-    //echo "<tr><td>Brak zapisanych zadań</td></tr>";
+    }
   }
 
 ?>
-
-  
   <div class="link">
-              <img src="https://img.icons8.com/nolan/64/re-enter-pincode.png"/>
-              <a href="zmiana_hasla_formularz.php"><h2>Zmiana hasła</h2></a>
+    <img src="https://img.icons8.com/nolan/64/re-enter-pincode.png"/>
+    <a href="zmiana_hasla_formularz.php"><h2>Zmiana hasła</h2></a>
   </div>
-            <div class="link">
-              <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>
-              <a href="wylog.php"><h2>Wylogowanie</h2></a>
-            </div>
+    <div class="link">
+      <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>
+      <a href="wylog.php"><h2>Wylogowanie</h2></a>
+    </div>
   </div>
-          <div class="autorzy">
-            <h2>Autorzy: <br> Tatiana Cieślar, Piotr Hadam, Wojciech Kozieł</h2>
-          </div>
-        </div>
-
+    <div class="autorzy">
+      <h2>Autorzy: <br> Tatiana Cieślar, Piotr Hadam, Wojciech Kozieł</h2>
+    </div>
+  </div>
 
   <div class="tasks">
           <div class="statuses">
@@ -478,109 +477,88 @@ function wyswietl_zadania_uzyt($tablica_zadan) {
                   <?php echo $done; ?>
                 </div>
             </div> <!--done-->
-            
           </div> <!--statuses-->
   </div> <!--tasks-->
   
 <?php
 }
 
-//do zmiany - trzeba dać jakieś działające z naszą apką xd
+// Wyświetla menu opcji na stronie
 function wyswietl_menu_uzyt() {
-  // wyświetlenie menu opcji na stronie
-?>
-  
-            
-<?php
-
-?>
-
-<?php
+  ?>
+  <?php
 }
 
-//wyświetl dodaj zadanie
+// Wyświetla formularz dodawania zadania
 function wyswietl_dodaj_zadanie_form() {
-?>
-<form name="tabela_zadan" action="dodaj_zadanie.php" method="post">
-  <h1>Dodaj zadanie:</h1>
-  <label for="zadanie"><h3>Zadanie:</h3></label><br>
-  <textarea style="resize: none" name="zadanie" rows="6" cols="29" required></textarea><br>
+  ?>
+  <form name="tabela_zadan" action="dodaj_zadanie.php" method="post">
+    <h1>Dodaj zadanie:</h1>
+    <label for="zadanie"><h3>Zadanie:</h3></label><br>
+    <textarea style="resize: none" name="zadanie" rows="6" cols="29" required></textarea><br>
 
-  <label for="date"><h3>Data zakończenia:</h3></label><br>
-  <input type="date" name="termin" min="2021-01-01" required><br>
+    <label for="date"><h3>Data zakończenia:</h3></label><br>
+    <input type="date" name="termin" min="2021-01-01" required><br>
 
-  <label for="szacowny_czas"><h3>Szacowany czas(dni):</h3></label><br>
-  <input type="number" name="szacowny_czas" min="1" required><br>
-  <br>
+    <label for="szacowny_czas"><h3>Szacowany czas(dni):</h3></label><br>
+    <input type="number" name="szacowny_czas" min="1" required><br>
+    <br>
 
+    <div class="mini-stopka">
+    <div class="stopka-link">
+        <img src="https://img.icons8.com/flat_round/64/000000/home--v1.png"/>  
+        <a href="czlonek.php"><h2>Strona główna</h2></a>
+        </div>
+        <input type="submit">
+        <div class="stopka-link">
+          <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>
+          <a href="wylog.php"><h2>Wylogowanie</h2></a>
+    </div>
+    </div>
+  </form>
+  <?php
+}
+
+// Wyświetla formularz zmiany hasła
+function wyswietl_haslo_form() {
+  ?>
+  <br />
+  <form action="zmiana_hasla.php" method="post">
+
+  <table class="center">
+      <tr>
+      <td><h3>Poprzednie hasło: </h3></td>
+      <td valign="top"><input type="password" name="stare_haslo" size="16" maxlength="16" required/></td></tr>
+      </tr>
+
+      <tr>
+      <td><h3>Nowe hasło: </h3></td>
+      <td valign="top"><input type="password" name="nowe_haslo" size="16" maxlength="16" required/></td></tr>
+      </tr>
+
+      <tr>
+      <td><h3>Powtórzenie nowego hasła: </h3></td>
+      <td valign="top"><input type="password" name="nowe_haslo2" size="16" maxlength="16" required/></td></tr>
+      </tr>
+      </table>
+  <br> <br>
   <div class="mini-stopka">
   <div class="stopka-link">
       <img src="https://img.icons8.com/flat_round/64/000000/home--v1.png"/>  
       <a href="czlonek.php"><h2>Strona główna</h2></a>
       </div>
-  
-    
-      <input type="submit">
-      <div class="stopka-link">
-        <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>
-        <a href="wylog.php"><h2>Wylogowanie</h2></a>
-  </div>
-  </div>
-  
-  
-</form>
-<?php
-}
-
-function wyswietl_haslo_form() {
-  // wyświetlenie formularza zmiany hasła
-?>
-   <br />
-   <form action="zmiana_hasla.php" method="post">
-
-   <table class="center">
-        <tr>
-        <td><h3>Poprzednie hasło: </h3></td>
-        <td valign="top"><input type="password" name="stare_haslo" size="16" maxlength="16" required/></td></tr>
-        </tr>
-
-        <tr>
-        <td><h3>Nowe hasło: </h3></td>
-        <td valign="top"><input type="password" name="nowe_haslo" size="16" maxlength="16" required/></td></tr>
-        </tr>
-
-        <tr>
-        <td><h3>Powtórzenie nowego hasła: </h3></td>
-        <td valign="top"><input type="password" name="nowe_haslo2" size="16" maxlength="16" required/></td></tr>
-        </tr>
-
-        <!-- <tr>
-          <td><div class="mini-stopka"><input type="submit" value="Zmień hasło"/></div></td>
-        </tr> -->
-      </table>
-   <br /> <br>
-
-   <div class="mini-stopka">
-  <div class="stopka-link">
-      <img src="https://img.icons8.com/flat_round/64/000000/home--v1.png"/>  
-      <a href="czlonek.php"><h2>Strona główna</h2></a>
-      </div>
-  
-    
       <input type="submit" value="Zmień hasło"/>
       <div class="stopka-link">
         <img src="https://img.icons8.com/ios-glyphs/30/000000/logout-rounded-left.png"/>
         <a href="wylog.php"><h2>Wylogowanie</h2></a>
   </div>
   </div>
-
-   
-<?php
+  <?php
 };
 
+// Wyświetla formularza HTML do ustawiania nowych haseł
 function wyswietl_zapomnij_form() {
-  // wyświetlenie formularza HTML do ustawiania nowych haseł
-?>
+  ?>
 
    <form action="zapomnij_haslo.php" method="post">
 
@@ -608,6 +586,6 @@ function wyswietl_zapomnij_form() {
       </div>
 
      </div>
-<?php
+  <?php
 }
 ?>

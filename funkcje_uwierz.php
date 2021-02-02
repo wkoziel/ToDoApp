@@ -1,15 +1,11 @@
 <?php
-
 require_once('funkcje_bazy.php');
 
+// Zarejestrowanie nowej osoby w bazie danych
 function rejestruj($nazwa_uz, $email, $haslo) {
-// zarejestrowanie nowej osoby w bazie danych
-// zwraca true lub komunikat o błędzie
 
- // połączenie z bazą danych
   $lacz = lacz_bd();
 
-  // sprawdzenie, czy nazwa użytkownika nie powtarza się
   $wynik = $lacz->query("select * from uzytkownik where nazwa_uz='".$nazwa_uz."'");
   if (!$wynik) {
      throw new Exception('<h1>Wykonanie zapytania nie powiodło się.</h1><br>
@@ -36,9 +32,9 @@ function rejestruj($nazwa_uz, $email, $haslo) {
      </div>');
   }
 
-  // jeżeli wszystko w porządku, umieszczenie w bazie danych
   $wynik = $lacz->query("insert into uzytkownik values
                        ('".$nazwa_uz."', sha1('".$haslo."'), '".$email."')");
+
   if (!$wynik) {
     throw new Exception('<h1>Rejestracja w bazie danych niemożliwa — proszę spróbować później.</h1><br>
      <div class="mini-stopka">
@@ -50,16 +46,12 @@ function rejestruj($nazwa_uz, $email, $haslo) {
      </div>
      </div>');
   }
-
   return true;
 }
 
+// Logowanie użytkownika do bazy danych
 function loguj($nazwa_uz, $haslo) {
-// sprawdzenie nazwy użytkownika i hasła w bazie danych
-// jeżeli się zgadza, zwraca true
-// jeżeli nie, wyrzuca wyjątek
-
-  // połączenie z bazą danych
+  
   $lacz = lacz_bd();
 
   // sprawdzenie unikatowości nazwy użytkownika
@@ -108,7 +100,6 @@ function sprawdz_prawid_uzyt() {
 
   } else {
      // nie jest zalogowany
-     
      echo '<h1>Brak zalogowania.</h1><br />';
      echo "<div class=\"mini-stopka\">";
       echo "<div class=\"stopka-link\">";
@@ -118,7 +109,6 @@ function sprawdz_prawid_uzyt() {
       echo "<a href=\"formularz_rejestracji.php\"><h2>Rejestracja</h2></a>";  
       echo "</div>";
       echo "</div>";
-
      tworz_stopke_html();
      exit;
   }
