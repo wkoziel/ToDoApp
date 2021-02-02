@@ -38,11 +38,8 @@ function tworz_tytul_html($tytul) {
   <!-- <h2><?php echo $tytul;?></h2> -->
   </header>
   <main>
-
   <section class="glass">
-    <div class="dashboard">
-
-
+  <div class="dashboard">
   <?php
   
   ?>
@@ -69,8 +66,9 @@ function wyswietl_informacje_witryny() {
   <main>
 
   <section class="glass">
+
     <div class="dashboard">
-  
+
 <?php
 }
 
@@ -85,19 +83,14 @@ function wyswietl_form_log() {
   <br>
   <!-- <hr size="6" color="#426696"> -->
   <br>
-
   <form method="post" action="czlonek.php">
-  
-    
-    
-
-    <div class="logging">
-      <!-- <hr size="6" width="30%" color="#426696"> -->
-      <h1>LOGOWANIE</h1>
-      <!-- <hr size="6" width="30%" color="#426696"> -->
-    </div>
-     
-       <br>
+      <div class="logging">
+        <!-- <hr size="6" width="30%" color="#426696"> -->
+        <h1>LOGOWANIE</h1>
+        <!-- <hr size="6" width="30%" color="#426696"> -->
+      </div>
+      
+      <br>
        
 
       <table class="center">
@@ -123,13 +116,10 @@ function wyswietl_form_log() {
       <input type="submit" value="Zaloguj się"/>
 
       <div class="stopka-link">
-      <a href="formularz_rejestracji.php"><h2>Nie masz konta? <br>Zarejestruj się</h2></a>
+        <a href="formularz_rejestracji.php"><h2>Nie masz konta? <br>Zarejestruj się</h2></a>
       </div>
-      
-      
-      
+      </div>
      </div>
-     
    </form>
 </div> <!--koniec div dashboard-->
 
